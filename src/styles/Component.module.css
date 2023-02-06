@@ -1,0 +1,23 @@
+.ext-icon {
+    transition-property: transform;
+    transform: translateY(-100px);
+    transition-duration: 300ms;
+}
+.int-icon {
+    transition-property: transform;
+    transform: translateY(-100px);
+    transition-duration: 300ms;
+}
+
+
+.showLink {}
+.card.showLink .ext-icon {
+    transform: translateY(0);
+}
+.card {}
+.card:hover .int-icon{
+    transform: translateY(0);
+}
+.card.showLink .int-icon {
+    transform: translateY(-100px);
+}

@@ -35,3 +35,4 @@ export const SkillsSets: Array<{ url: string, name: string, icon: string }> = [{
     url: "https://docker.com",
     icon: "devicon-docker-plain"
 }]
+export const ShowProjects: Array<string> = ["CosmoFrontier/Frontier", "abh80/smart-edge", "abh80/family-room", "abh80/github-readme-stats"]

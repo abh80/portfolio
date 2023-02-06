@@ -6,13 +6,15 @@ import ViewItem from "@/components/ViewItem";
 import Link from "next/link";
 import React from "react";
 import ViewItemDivider from "@/components/ViewItemDivider";
-import {SkillsSets} from "@/utils/skillsets";
+import {SkillsSets, ShowProjects} from "@/utils/home";
 import StackButton from "@/components/StackButton";
+import axios from "axios";
+import ProjectCard from "@/components/ProjectCard";
 
 const roboto = Roboto({weight: "400", subsets: ["latin"]});
 const kanit = Kanit({subsets: ["latin"], weight: ["600", "500", "400"]});
 
-export default function Home() {
+export default function Home({projects}: { projects: any }) {
     return (
         <>
             <Head>
@@ -21,16 +23,13 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico"/>
                 <meta name="robots" content="index, follow"/>
-                <link rel="stylesheet"
-                      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"/>
             </Head>
 
             <ViewItem>
                 <>
                     <section id={"about-me"}>
                         <h1 className={kanit.className + " text-white text-2xl font-bold"}>
-                            <Link scroll={true} href={"#about-me"}>About Me</Link></h1>
+                            <Link href={"#about-me"}>About Me</Link></h1>
                         <div className="h-5"></div>
                         <h2 className={kanit.className + " text-white text-lg leading-loose"}>Abh80 is a highly
                             motivated individual
@@ -44,7 +43,8 @@ export default function Home() {
                         <div className="float-right mr-10 ml-10 hover:cursor-pointer rounded-md relative">
                             <Image className={styles.img1}
                                    alt={"Logo"}
-                                   src="/adaptive-logo-dark.svg" height={100} width={100} style={{height: 200, width: 200}}/>
+                                   src="/adaptive-logo-dark.svg" height={100} width={100}
+                                   style={{height: 200, width: 200}}/>
                             <Image className={styles.img2}
                                    alt={"Logo"}
                                    src="/logo.svg" height={100} width={100} style={{height: 200, width: 200}}/>
@@ -83,8 +83,8 @@ export default function Home() {
                             </Link>
                         </h2>
                         <div className="h-5"></div>
-                        <div className="flex flex-wrap gap-2">
-
+                        <div className="flex flex-wrap gap-5 mb-20">
+                            {projects.map((x: any, i: number) => <ProjectCard key={i} project={x}/>)}
                         </div>
                     </section>
                 </>
@@ -92,4 +92,21 @@ export default function Home() {
 
         </>
     )
+}
+
+export async function getStaticProps() {
+    const res = await axios.get("https://api.github.com/users/abh80/repos?type=all&per_page=100" , {
+        headers : {
+            "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
+        }
+    });
+
+    const projects = res.data.filter((x: { full_name: string }) => ShowProjects.includes(x.full_name));
+    for (let i = 0; i < projects.length; i++) {
+        const contrib = await axios.get(projects[i].contributors_url)
+        projects[i].contributors = contrib.data
+    }
+    return {
+        props: {projects}, // will be passed to the page component as props
+    }
 }

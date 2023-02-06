@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styles from "../styles/Home.module.css"
 import {Roboto} from "@next/font/google";
+
 const roboto = Roboto({weight: "400", subsets: ["latin"]});
 
 
@@ -21,7 +22,7 @@ export default function StackButton({href, name, icon}: { href: string, name: st
                             <i className={icon + " text-xl"}></i>
                                 {" "}<p className="text-lg">{name}</p>
                             <span
-                                className={"material-symbols-outlined text-lg " + styles["ext-icon"]}>open_in_new</span>
+                                className={"material-symbols-outlined text-[1.2rem] " + styles["ext-icon"]}>open_in_new</span>
                             </span>
         </Link>
     )

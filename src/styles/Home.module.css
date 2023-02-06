@@ -19,12 +19,12 @@
     width: fit-content;
 }
 
-.img1 + .img2:hover {
-    opacity: 0;
 
+.img1:hover {
+    opacity: 1;
 }
 .img1 {
-    opacity: 1;
+    opacity: 0;
 }
 .img2 {
     position: absolute;

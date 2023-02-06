@@ -1,0 +1,35 @@
+.stack-link-btn .ext-icon {
+    top: 50px;
+    position: relative;
+
+}
+
+.stack-link-btn {
+    overflow: hidden;
+}
+
+.ext-icon {
+    transition-property: top, width;
+    transition-duration: 300ms;
+}
+
+.stack-link-btn.is-hovered .ext-icon {
+    display: block;
+    top: 0;
+    width: fit-content;
+}
+
+.img1 + .img2:hover {
+    opacity: 0;
+
+}
+.img1 {
+    opacity: 1;
+}
+.img2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition-property: opacity;
+    transition-duration: 200ms;
+}

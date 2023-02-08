@@ -46,7 +46,7 @@ export default function Home({projects}: { projects: any }) {
                         <div className={"h-5 "}/>
                         <div className="float-right mr-10 ml-10 hover:cursor-pointer rounded-md">
                             <Image
-                                className={styles.img}
+                                className={styles.img + " md:visible hidden"}
                                 alt={"Logo"}
                                 src="/adaptive-logo-dark.svg"
                                 height={100}

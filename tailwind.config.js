@@ -11,5 +11,9 @@ module.exports = {
     theme: {
         extend: {},
     },
+    variants: {
+        opacity: ["hover"],
+        backgroundColor: ["responsive", "hover", "focus", "active" , "group-hover"],
+    },
     plugins: [],
 }

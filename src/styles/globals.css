@@ -18,22 +18,26 @@ html, body {
     scroll-behavior: smooth;
 }
 
-html::-webkit-scrollbar {
-    width: 20px;
+::-webkit-scrollbar {
+    width: 7px;
 }
 
-html::-webkit-scrollbar-track {
-    background-color: black;
-}
 
-html::-webkit-scrollbar-thumb {
-    background: #4e4e4e;
-    border-radius: 25px;
+
+::-webkit-scrollbar-thumb {
+    background: deepskyblue;
 }
 
 .material-symbols-outlined {
     font-variation-settings: 'FILL' 0,
     'wght' 400,
     'GRAD' 0,
-    'opsz' 48
+    'opsz' 30
+}
+
+.material-symbols-filled {
+    font-variation-settings: 'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 30
 }

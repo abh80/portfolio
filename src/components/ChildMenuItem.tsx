@@ -16,12 +16,12 @@ export default function ChildMenuItem({
     <Link
       href={"#" + hash}
       className={
-        "flex group w-full cursor-pointer gap-3 transition-all border-l border-slate-500/50 ml-1"
+        "flex group w-full cursor-pointer gap-3 transition-all border-l border-slate-600 hover:border-slate-500 -ml-px"
       }
     >
       <span
         className={[
-          "text-[1rem] font-semibold align-middle transition-all ml-5",
+          "text-[1rem] font-semibold align-middle transition-all ml-5 capitalize",
           active
             ? "text-slate-200"
             : "text-slate-500 group-hover:text-slate-300 group-hover:scale-[1.1] transform",

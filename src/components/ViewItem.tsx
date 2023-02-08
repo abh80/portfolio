@@ -82,9 +82,9 @@ export default function ViewItem({ children }: { children: JSX.Element }) {
             <h2 className={roboto.className + " text-slate-200 font-bold"}>
               On this page
             </h2>
-            <section className="mt-2">
+            <section className="mt-2 border-l border-slate-600 space-y-0.5">
               {articles.map((x, i) => (
-                <ChildMenuItem title={x} hash={x} key={i} />
+                <ChildMenuItem title={x.replace("-", " ")} hash={x} key={i} />
               ))}
             </section>
           </section>

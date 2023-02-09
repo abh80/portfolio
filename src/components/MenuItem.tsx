@@ -20,24 +20,25 @@ export default function MenuItem({
     <Link
       href={url}
       className={
-        "flex group w-full cursor-pointer gap-3 transition-all items-center " +
+        "flex group w-full cursor-pointer gap-2 transition-all items-center " +
         (active ? "" : "transform hover:scale-[1.1]")
       }
     >
       {icon ? (
-        <span
+        <div
           className={[
-            "transition-all bg-slate-400/50 p-1 material-symbols-outlined material-symbols-filled text-white text-[1.1rem] rounded-md group-hover:" +
+            "align-middle transition-all bg-slate-400/50 px-1 rounded-md items-center group-hover:" +
               bgColor,
             active ? bgColor : "",
+            active ? "text-white" : "text-slate0500",
           ].join(" ")}
         >
-          {icon}
-        </span>
+          <i className="fa-solid fa-house fa-sm"></i>
+        </div>
       ) : null}
       <span
         className={[
-          "text-[1rem] font-semibold align-middle transition-all",
+          "text-[0.9rem] font-semibold align-middle transition-all",
           active
             ? "text-slate-200"
             : "text-slate-500 group-hover:text-slate-300",

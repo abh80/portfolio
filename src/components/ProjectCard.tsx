@@ -37,22 +37,18 @@ export default function ProjectCard({ project }: { project: any }) {
           {project.full_name}
         </h2>
       </Link>
-      <span
+      <i
         className={
-          "material-symbols-outlined text-[1.2rem] text-white absolute top-3 right-3 " +
+          "fa-solid fa-up-right-from-square fa-sm text-white absolute top-5 right-3 " +
           styles["ext-icon"]
         }
-      >
-        open_in_new
-      </span>
+      ></i>
       <span
         className={
-          "material-symbols-outlined text-[1.2rem] text-white absolute top-3 right-3 " +
+          "fa-solid fa-arrow-right fa-sm text-white absolute top-5 right-3 " +
           styles["int-icon"]
         }
-      >
-        arrow_forward
-      </span>
+      ></span>
 
       <Link
         href={project.html_url}

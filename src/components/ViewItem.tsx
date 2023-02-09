@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { Kanit, Roboto } from "@next/font/google";
+import { Roboto } from "@next/font/google";
 import Link from "next/link";
 import styles from "../styles/Component.module.css";
 import MenuItem from "@/components/MenuItem";

@@ -18,6 +18,7 @@ export default function MenuItem({
 }) {
   return (
     <Link
+      shallow={true}
       href={url}
       className={
         "flex group w-full cursor-pointer gap-2 transition-all items-center " +
@@ -28,9 +29,10 @@ export default function MenuItem({
         <div
           className={[
             "align-middle transition-all bg-slate-400/50 px-1 rounded-md items-center group-hover:" +
-              bgColor,
+              bgColor +
+              "",
             active ? bgColor : "",
-            active ? "text-white" : "text-slate0500",
+            active ? "text-white" : "text-slate-300",
           ].join(" ")}
         >
           <i className="fa-solid fa-house fa-sm"></i>

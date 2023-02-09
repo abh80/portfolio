@@ -1,6 +1,5 @@
-import Head from "next/head";
 import Image from "next/image";
-import { Roboto, Kanit } from "@next/font/google";
+import { Kanit } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
 import ViewItem from "@/components/ViewItem";
 import Link from "next/link";
@@ -11,20 +10,17 @@ import StackButton from "@/components/StackButton";
 import axios from "axios";
 import ProjectCard from "@/components/ProjectCard";
 import * as process from "process";
+import MetaResolver from "@/components/MetaResolver";
 
-const roboto = Roboto({ weight: "400", subsets: ["latin"] });
 const kanit = Kanit({ subsets: ["latin"], weight: ["600", "500", "400"] });
 
 export default function Home({ projects }: { projects: any }) {
   return (
     <>
-      <Head>
-        <title>Abh80 - Home</title>
-        <meta name="description" content="A portfolio of Abh80" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="robots" content="index, follow" />
-      </Head>
+      <MetaResolver
+        title={"Home - Abh80"}
+        description="My portfolio website!. To share your view on email contact@abh80.site"
+      />
 
       <ViewItem>
         <>

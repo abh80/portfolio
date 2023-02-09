@@ -20,7 +20,7 @@ export default function MenuItem({
     <Link
       href={url}
       className={
-        "flex group w-full cursor-pointer gap-3 transition-all " +
+        "flex group w-full cursor-pointer gap-3 transition-all items-center " +
         (active ? "" : "transform hover:scale-[1.1]")
       }
     >

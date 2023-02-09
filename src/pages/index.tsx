@@ -19,7 +19,12 @@ export default function Home({ projects }: { projects: any }) {
     <>
       <MetaResolver
         title={"Home - Abh80"}
-        description="My portfolio website!. To share your view on email contact@abh80.site"
+        description="Abh80 is a highly motivated individual currently enrolled in high
+              school. They possess a strong interest in the field of programming
+              and have a solid understanding of the programming languages like
+              Java and JavaScript. Their eagerness to learn and grow their
+              skills in this field make them a valuable asset to any team or
+              project."
       />
 
       <ViewItem>

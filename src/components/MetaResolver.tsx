@@ -19,13 +19,15 @@ export default function MetaResolver({
       <meta property="twitter:description" content={description} />
       <meta property="og:description" content={description} />
       <meta property="twitter:image" content={banner} />
-      <meta property="og:image" content={banner} />
+      <meta property="og:thumbnail" content={banner} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />
       <meta name="robots" content="index, follow" />
       <title>{title}</title>
       <meta name="description" content="A portfolio of Abh80" />
-      <meta name="theme-color" content="#01344e" />
+      <meta name="theme-color" content="#0098e5" />
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="og:color" content="#0098e5" />
     </Head>
   );
 }

@@ -80,9 +80,7 @@ export default function ProjectCard({ project }: { project: any }) {
       </h2>
       <div className="grid grid-flow-col mb-1 gap-1">
         <div className="flex gap-1 h-full align-middle items-center ">
-          <span className="material-symbols-outlined text-white text-[1.2rem]">
-            star
-          </span>
+          <i className="fa-regular fa-star fa-sm text-white"></i>
           <span className={roboto.className + " text-md text-white "}>
             {project.stargazers_count}
           </span>

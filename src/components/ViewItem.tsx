@@ -6,6 +6,7 @@ import styles from "../styles/Component.module.css";
 import MenuItem from "@/components/MenuItem";
 import { menuPages1 } from "@/utils/home";
 import ChildMenuItem from "@/components/ChildMenuItem";
+import { useRouter } from "next/router";
 
 const roboto = Roboto({
   weight: ["400", "700", "500", "900"],
@@ -13,6 +14,8 @@ const roboto = Roboto({
 });
 
 export default function ViewItem({ children }: { children: JSX.Element }) {
+  const router = useRouter();
+
   const [active, setActive]: [string | null, React.SetStateAction<any>] =
     useState(null);
   const [articles, setArticles]: [Array<string>, React.SetStateAction<any>] =
@@ -24,14 +27,12 @@ export default function ViewItem({ children }: { children: JSX.Element }) {
         .filter((x) => x.id != null)
         .map((x) => x.id)
     );
-    let t = document.getElementById("__next");
     let h = document.querySelector("header");
-    if (!t) return;
-    t.addEventListener("scroll", (c) => {
+
+    document.body.addEventListener("scroll", () => {
       if (!h) return;
-      if (!t) return;
       // @ts-ignore
-      if (t.scrollTop > h.offsetHeight) {
+      if (document.body.scrollTop > h.offsetHeight) {
         h.classList.remove("bg-[#00000000]");
         h.classList.add("bg-slate-900/[0.25]");
       } else {
@@ -48,7 +49,7 @@ export default function ViewItem({ children }: { children: JSX.Element }) {
           styles.mainHeader
         }
       >
-        <div className="p-2 w-full bg-[#00000000] max-w-7xl mx-auto ">
+        <div className="p-2 w-full bg-[#00000000] max-w-7xl mx-auto scroll-pt-6">
           <Link href={"/"} className={"flex gap-2 w-fit " + styles.logoH}>
             <Image
               src={"/adaptive-logo-dark.svg"}

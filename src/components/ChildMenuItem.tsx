@@ -14,6 +14,7 @@ export default function ChildMenuItem({
 }) {
   return (
     <Link
+      shallow={true}
       href={"#" + hash}
       className={
         "flex group w-full cursor-pointer gap-3 transition-all border-l border-slate-600 hover:border-slate-500 -ml-px"

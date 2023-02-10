@@ -85,24 +85,52 @@ export default function ViewItem({ children }: { children: JSX.Element }) {
               />
             ))}
           </section>
-          <section className="mt-5">
-            <h2 className={roboto.className + " text-slate-200 font-bold"}>
-              On this page
-            </h2>
-            <section className="mt-2 border-l border-slate-600 space-y-1">
-              {articles.map((x, i) => (
-                <ChildMenuItem
-                  title={x.replace("-", " ")}
-                  hash={x}
-                  key={i}
-                  active={curr_hash == x}
-                />
-              ))}
+          {articles.length ? (
+            <section className="mt-5">
+              <h2 className={roboto.className + " text-slate-200 font-bold"}>
+                On this page
+              </h2>
+              <section className="mt-2 border-l border-slate-600 space-y-1">
+                {articles.map((x, i) => (
+                  <ChildMenuItem
+                    title={x.replace("-", " ")}
+                    hash={x}
+                    key={i}
+                    active={curr_hash == x}
+                  />
+                ))}
+              </section>
             </section>
-          </section>
+          ) : null}
         </div>
 
-        <div className="p-2 lg:ml-[19.5rem] px-5 lg:px-0">{children}</div>
+        <div className="p-2 lg:ml-[19.5rem] px-5 lg:px-0">
+          {children}
+          <footer className="border-t border-slate-200/10 pb-32 pt-10 flex flex-wrap items-center px-1 justify-between">
+            <div className="flex flex-wrap items-center gap-3">
+              <Image
+                className="h-5 w-5 opacity-50"
+                src="/adaptive-logo-dark.svg"
+                alt="Footer logo"
+                height={50}
+                width={50}
+              />
+              <h5
+                className={"text-slate-400 font-semibold " + roboto.className}
+              >
+                Copyright © {new Date().getFullYear()} Abh80
+              </h5>
+            </div>
+
+            <div className="flex flex-wrap items-center">
+              <Link
+                target="_blank"
+                href="https://github.com/abh80/portfolio"
+                className="devicon-github-original text-slate-400 hover:text-slate-300 cursor-pointer text-[1.2rem]"
+              ></Link>
+            </div>
+          </footer>
+        </div>
       </div>
     </>
   );

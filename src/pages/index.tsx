@@ -45,16 +45,6 @@ export default function Home({ projects }: { projects: any }) {
               project.
             </h2>
             <div className={"h-5 "} />
-            <div className="float-right mr-10 ml-10 hover:cursor-pointer rounded-md">
-              <Image
-                className={styles.img + " md:visible hidden"}
-                alt={"Logo"}
-                src="/adaptive-logo-dark.svg"
-                height={100}
-                width={100}
-                style={{ height: 200, width: 200 }}
-              />
-            </div>
             <h2
               className={kanit.className + " text-white text-lg leading-loose "}
             >

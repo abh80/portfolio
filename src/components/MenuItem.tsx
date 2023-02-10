@@ -27,9 +27,10 @@ export default function MenuItem({
       {icon ? (
         <div
           className={[
-            `align-middle transition-all bg-slate-400/50 px-1 rounded-md items-center group-hover:${bgColor}`,
+            `align-middle transition-all bg-slate-400/50 px-1 rounded-md items-center`,
             active ? bgColor : "",
             active ? "text-white" : "text-slate-300",
+            `group-hover:bg-blue-400`,
           ].join(" ")}
         >
           <i className="fa-solid fa-house fa-sm"></i>

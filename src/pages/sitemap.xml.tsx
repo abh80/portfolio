@@ -5,7 +5,7 @@ function generateSiteMap() {
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
     <loc>https://abh80.site</loc>
-    <lastmod>2023-02-09</lastmod>
+    <lastmod>2023-02-08</lastmod>
   </url>
    </urlset>
  `;

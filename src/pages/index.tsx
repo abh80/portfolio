@@ -5,7 +5,7 @@ import ViewItem from "@/components/ViewItem";
 import Link from "next/link";
 import React from "react";
 import ViewItemDivider from "@/components/ViewItemDivider";
-import { SkillsSets, ShowProjects } from "@/utils/home";
+import { SkillsSets, ShowProjects } from "@/utils/main";
 import StackButton from "@/components/StackButton";
 import axios from "axios";
 import ProjectCard from "@/components/ProjectCard";

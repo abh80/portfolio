@@ -4,7 +4,7 @@ import { Roboto } from "@next/font/google";
 import Link from "next/link";
 import styles from "../styles/Component.module.css";
 import MenuItem from "@/components/MenuItem";
-import { menuPages1 } from "@/utils/home";
+import { menuPages1 } from "@/utils/main";
 import ChildMenuItem from "@/components/ChildMenuItem";
 import { useRouter } from "next/router";
 

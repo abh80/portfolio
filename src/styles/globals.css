@@ -10,6 +10,7 @@ html, body {
     overflow-x: hidden;
     background-color: black;
     scroll-behavior: smooth;
+    color-scheme: dark;
 }
 
 #__next {
@@ -19,10 +20,3 @@ html, body {
     width: 100%;
 }
 
-::-webkit-scrollbar {
-    width: 7px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: deepskyblue;
-}

@@ -14,10 +14,12 @@ export default function ChildMenuItem({
 }) {
   return (
     <Link
+      data-hash={hash}
       shallow={true}
       href={"#" + hash}
       className={
-        "flex group w-full cursor-pointer gap-3 transition-all border-l border-slate-600 hover:border-slate-500 -ml-px"
+        "flex group w-full cursor-pointer gap-3 transition-all border-l border-slate-600 hover:border-slate-500 -ml-px " +
+        (active ? "border-slate-400" : "")
       }
     >
       <span

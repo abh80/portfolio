@@ -15,20 +15,26 @@ const roboto = Roboto({
 
 export default function ViewItem({ children }: { children: JSX.Element }) {
   const router = useRouter();
-
   const [active, setActive]: [string | null, React.SetStateAction<any>] =
     useState(null);
   const [articles, setArticles]: [Array<string>, React.SetStateAction<any>] =
     useState([]);
+  const [curr_hash, setHash]: [string | null, React.SetStateAction<any>] =
+    useState("");
   useEffect(() => {
+    setHash(window.location.hash?.replace("#", ""));
     setActive(window.location.pathname);
     setArticles(
       Array.from(document.querySelectorAll("#__next section"))
-        .filter((x) => x.id != null)
+        .filter((x) => x.id.trim())
         .map((x) => x.id)
     );
+    console.log(articles);
     let h = document.querySelector("header");
-
+    router.events.on("hashChangeComplete", () => {
+      const { hash } = window.location;
+      setHash(hash.replace("#", ""));
+    });
     document.body.addEventListener("scroll", () => {
       if (!h) return;
       // @ts-ignore
@@ -49,7 +55,7 @@ export default function ViewItem({ children }: { children: JSX.Element }) {
           styles.mainHeader
         }
       >
-        <div className="p-2 w-full bg-[#00000000] max-w-7xl mx-auto scroll-pt-6">
+        <div className="p-2 w-full bg-[#00000000] max-w-7xl mx-auto">
           <Link href={"/"} className={"flex gap-2 w-fit " + styles.logoH}>
             <Image
               src={"/adaptive-logo-dark.svg"}
@@ -83,9 +89,14 @@ export default function ViewItem({ children }: { children: JSX.Element }) {
             <h2 className={roboto.className + " text-slate-200 font-bold"}>
               On this page
             </h2>
-            <section className="mt-2 border-l border-slate-600 space-y-0.5">
+            <section className="mt-2 border-l border-slate-600 space-y-1">
               {articles.map((x, i) => (
-                <ChildMenuItem title={x.replace("-", " ")} hash={x} key={i} />
+                <ChildMenuItem
+                  title={x.replace("-", " ")}
+                  hash={x}
+                  key={i}
+                  active={curr_hash == x}
+                />
               ))}
             </section>
           </section>

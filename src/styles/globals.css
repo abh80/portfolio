@@ -13,10 +13,3 @@ html, body {
     color-scheme: dark;
 }
 
-#__next {
-    background-color: rgba(0, 0, 0, 0.6);
-    -webkit-backdrop-filter: blur(8px);
-    min-height: 100%;
-    width: 100%;
-}
-

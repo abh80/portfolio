@@ -17,7 +17,7 @@ export default function Document() {
           referrerPolicy="no-referrer"
         />
       </Head>
-      <body className={"bg-gradient-to-tr from-black to-black via-sky-600"}>
+      <body className={"bg-[#001e29]"}>
         <Main />
         <NextScript />
       </body>

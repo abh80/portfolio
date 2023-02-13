@@ -7,6 +7,7 @@ import MenuItem from "@/components/MenuItem";
 import { menuPages1 } from "@/utils/main";
 import ChildMenuItem from "@/components/ChildMenuItem";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
 const roboto = Roboto({
   weight: ["400", "700", "500", "900"],
@@ -61,15 +62,26 @@ export default function ViewItem({
         }
       >
         <div className="p-2 w-full max-w-7xl mx-auto">
-          <Link href={"/"} className={"flex gap-2 w-fit " + styles.logoH}>
-            <Image
-              src={"/adaptive-logo-dark.svg"}
-              alt={"Main logo for header"}
-              width={30}
-              height={30}
-            />
-            <h1 className={roboto.className + " text-white text-2xl"}>Abh80</h1>
-          </Link>
+          <motion.div
+            className="max-w-fit"
+            animate={{
+              scale: [1, 1.2, 1, 1.2, 1],
+            }}
+            transition={{ duration: 1, type: "spring" }}
+          >
+            <Link href={"/"} className={"flex gap-2 w-fit"}>
+              <Image
+                src={"/adaptive-logo-dark.svg"}
+                alt={"Main logo for header"}
+                width={30}
+                height={30}
+              />
+
+              <h1 className={roboto.className + " text-white text-2xl"}>
+                Abh80
+              </h1>
+            </Link>
+          </motion.div>
         </div>
       </header>
       {header ? (

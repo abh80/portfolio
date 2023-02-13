@@ -1,6 +1,7 @@
 import React from "react";
 import { Roboto } from "@next/font/google";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] });
 export default function ChildMenuItem({

@@ -9,6 +9,8 @@ import axios from "axios";
 import ProjectCard from "@/components/ProjectCard";
 import * as process from "process";
 import MetaResolver from "@/components/MetaResolver";
+import { motion, Variants } from "framer-motion";
+import WavyText from "@/components/anim/WavyText";
 
 const kanit = Kanit({ subsets: ["latin"], weight: ["600", "500", "400"] });
 const roboto = Roboto({
@@ -32,29 +34,35 @@ export default function Home({ projects }: { projects: any }) {
       <ViewItem
         header={
           <div className="w-full max-w-7xl mx-auto px-5 relative">
-            <h2
-              className={
-                "font-bold text-[1.7rem] ml-0.5 text-sky-400 " + kanit.className
-              }
+            <motion.div
+              transition={{
+                repeatType: "loop",
+                repeat: Infinity,
+                type: "tween",
+                duration: 2.2,
+              }}
+              animate={{ y: [10, -10, 10] }}
             >
-              Home
-            </h2>
-            <h1
-              className={
-                "text-7xl font-bold mt-2 text-slate-200 " + roboto.className
-              }
-            >
-              Hi, I am Abh80
-            </h1>
-            <h3
+              <WavyText
+                className={
+                  "font-bold text-[1.7rem] ml-0.5 text-sky-400 " +
+                  kanit.className
+                }
+                text="Home"
+              />
+            </motion.div>
+            <WavyText
+              text="Hi, I am Abh80"
+              className={"text-7xl font-bold mt-2 text-slate-200 " + roboto}
+            />
+            <WavyText
               className={
                 "mt-3 text-[1.2rem] text-slate-400 font-semibold ml-1 " +
                 roboto.className
               }
-            >
-              a <b className="text-slate-300">Java / Javascript developer</b>,
-              interested in web and android applications
-            </h3>
+              text="a Java / Javascript developer,
+              interested in web and android applications"
+            />
           </div>
         }
       >

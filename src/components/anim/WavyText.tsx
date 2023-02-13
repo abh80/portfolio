@@ -42,7 +42,7 @@ export default function WavyText({
 
   return (
     <motion.h1
-      className={"flex " + className}
+      className={"flex flex-wrap " + className}
       variants={container}
       initial="hidden"
       animate="visible"

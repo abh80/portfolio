@@ -85,7 +85,7 @@ export default function ViewItem({
         </div>
       </header>
       {header ? (
-        <main className="bg-gradient-to-b from-[#0d1b1c] to-transparent w-full pb-24 pt-40">
+        <main className="bg-gradient-to-b from-[#0d1b1c] to-transparent w-full pb-16 pt-20 md:pb-24 md:pt-40">
           {header}
         </main>
       ) : (
@@ -94,11 +94,11 @@ export default function ViewItem({
       <div
         id={"main-content"}
         className={
-          "max-w-7xl w-full mx-auto pt-5 relative flex lg:gap-8 " +
+          "max-w-7xl w-full mx-auto pt-5 relative lg:flex lg:gap-8 " +
           styles.mainContent
         }
       >
-        <div className="relative">
+        <div className="relative ml-8">
           <div className="top-40 sticky z-20 hidden lg:block w-[15.5rem] bg-[#0f617e]/20 rounded-lg mr-0 pt-3 pb-5 overflow-auto space-y-5 backdrop-blur border border-slate-200/5">
             <section className="border-b border-slate-200/10 px-5 pb-3">
               <h1 className={"font-bold text-slate-300 " + roboto.className}>

@@ -33,7 +33,7 @@ export default function Home({ projects }: { projects: any }) {
 
       <ViewItem
         header={
-          <div className="w-full max-w-7xl mx-auto px-5 relative">
+          <div className="w-full max-w-7xl mx-auto px-3 relative lg:px-5">
             <motion.div
               transition={{
                 repeatType: "loop",
@@ -45,7 +45,7 @@ export default function Home({ projects }: { projects: any }) {
             >
               <WavyText
                 className={
-                  "font-bold text-[1.7rem] ml-0.5 text-sky-400 " +
+                  "font-bold text-[1rem] ml-0.5 text-sky-400 md:text-[1.7rem] " +
                   kanit.className
                 }
                 text="Home"
@@ -53,11 +53,13 @@ export default function Home({ projects }: { projects: any }) {
             </motion.div>
             <WavyText
               text="Hi, I am Abh80"
-              className={"text-7xl font-bold mt-2 text-slate-200 " + roboto}
+              className={
+                "text-3xl font-bold mt-2 text-slate-200 md:text-7xl " + roboto
+              }
             />
             <WavyText
               className={
-                "mt-3 text-[1.2rem] text-slate-400 font-semibold ml-1 " +
+                "mt-3 text-[1rem] text-slate-400 font-semibold md:text-[1.2rem] max-w-[300px] lg:max-w-fit md:max-w-[600px] md:ml-1 " +
                 roboto.className
               }
               text="a Java / Javascript developer,

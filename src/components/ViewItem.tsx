@@ -71,7 +71,7 @@ export default function ViewItem({ children }: { children: JSX.Element }) {
       <div
         id={"main-content"}
         className={
-          "max-w-7xl w-full mx-auto pt-5 relative flex lg:gap-8" +
+          "max-w-7xl w-full mx-auto pt-5 relative flex lg:gap-8 " +
           styles.mainContent
         }
       >

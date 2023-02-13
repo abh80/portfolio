@@ -1,6 +1,4 @@
-import Image from "next/image";
-import { Kanit } from "@next/font/google";
-import styles from "@/styles/Home.module.css";
+import { Kanit, Roboto } from "@next/font/google";
 import ViewItem from "@/components/ViewItem";
 import Link from "next/link";
 import React from "react";
@@ -13,6 +11,10 @@ import * as process from "process";
 import MetaResolver from "@/components/MetaResolver";
 
 const kanit = Kanit({ subsets: ["latin"], weight: ["600", "500", "400"] });
+const roboto = Roboto({
+  weight: ["400", "700", "500", "900"],
+  subsets: ["latin"],
+});
 
 export default function Home({ projects }: { projects: any }) {
   return (
@@ -27,7 +29,35 @@ export default function Home({ projects }: { projects: any }) {
               project."
       />
 
-      <ViewItem>
+      <ViewItem
+        header={
+          <div className="w-full max-w-7xl mx-auto px-5 relative">
+            <h2
+              className={
+                "font-bold text-[1.7rem] ml-0.5 text-sky-400 " + kanit.className
+              }
+            >
+              Home
+            </h2>
+            <h1
+              className={
+                "text-7xl font-bold mt-2 text-slate-200 " + roboto.className
+              }
+            >
+              Hi, I am Abh80
+            </h1>
+            <h3
+              className={
+                "mt-3 text-[1.2rem] text-slate-400 font-semibold ml-1 " +
+                roboto.className
+              }
+            >
+              a <b className="text-slate-300">Java / Javascript developer</b>,
+              interested in web and android applications
+            </h3>
+          </div>
+        }
+      >
         <>
           <section id={"about-me"}>
             <h1 className={kanit.className + " text-white text-2xl font-bold "}>

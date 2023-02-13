@@ -13,7 +13,13 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
-export default function ViewItem({ children }: { children: JSX.Element }) {
+export default function ViewItem({
+  children,
+  header,
+}: {
+  children: JSX.Element;
+  header?: JSX.Element;
+}) {
   const router = useRouter();
   const [active, setActive]: [string | null, React.SetStateAction<any>] =
     useState(null);
@@ -29,7 +35,6 @@ export default function ViewItem({ children }: { children: JSX.Element }) {
         .filter((x) => x.id.trim())
         .map((x) => x.id)
     );
-    console.log(articles);
     let h = document.querySelector("header");
     router.events.on("hashChangeComplete", () => {
       const { hash } = window.location;
@@ -39,10 +44,10 @@ export default function ViewItem({ children }: { children: JSX.Element }) {
       if (!h) return;
       // @ts-ignore
       if (document.body.scrollTop > h.offsetHeight) {
-        h.classList.remove("bg-[#00000000]");
+        h.classList.remove("bg-[#0d1b1c]");
         h.classList.add("bg-slate-900/[0.25]");
       } else {
-        h.classList.add("bg-[#00000000]");
+        h.classList.add("bg-[#0d1b1c]");
         h.classList.remove("bg-slate-900/[0.25]");
       }
     });
@@ -51,11 +56,11 @@ export default function ViewItem({ children }: { children: JSX.Element }) {
     <>
       <header
         className={
-          "sticky top-0 w-full z-40  mx-auto p-2 backdrop-blur transition-colors border-slate-50/[0.05] border-b-2 " +
+          "sticky top-0 w-full z-[999] backdrop-blur transition-colors border-slate-50/[0.05] border-b-2 bg-[#0d1b1c] p-2 " +
           styles.mainHeader
         }
       >
-        <div className="p-2 w-full bg-[#00000000] max-w-7xl mx-auto">
+        <div className="p-2 w-full max-w-7xl mx-auto">
           <Link href={"/"} className={"flex gap-2 w-fit " + styles.logoH}>
             <Image
               src={"/adaptive-logo-dark.svg"}
@@ -67,7 +72,13 @@ export default function ViewItem({ children }: { children: JSX.Element }) {
           </Link>
         </div>
       </header>
-
+      {header ? (
+        <main className="bg-gradient-to-b from-[#0d1b1c] to-transparent w-full pb-24 pt-40">
+          {header}
+        </main>
+      ) : (
+        <div className="h-40 w-full"></div>
+      )}
       <div
         id={"main-content"}
         className={
@@ -76,7 +87,7 @@ export default function ViewItem({ children }: { children: JSX.Element }) {
         }
       >
         <div className="relative">
-          <div className="top-40 sticky z-20 hidden lg:block w-[15.5rem] bg-[#0f617e]/20 rounded-lg mr-0 py-3 overflow-auto space-y-5 backdrop-blur border border-slate-200/5">
+          <div className="top-40 sticky z-20 hidden lg:block w-[15.5rem] bg-[#0f617e]/20 rounded-lg mr-0 pt-3 pb-5 overflow-auto space-y-5 backdrop-blur border border-slate-200/5">
             <section className="border-b border-slate-200/10 px-5 pb-3">
               <h1 className={"font-bold text-slate-300 " + roboto.className}>
                 Table of contents
@@ -116,7 +127,7 @@ export default function ViewItem({ children }: { children: JSX.Element }) {
         </div>
         <div className="p-2 px-3 lg:px-5">{children}</div>
       </div>
-      <footer className="w-full mx-auto bg-transparent bg-gradient-to-b from-transparent to-[#0d1b1c] px-2 md:px-0">
+      <footer className="w-full mx-auto bg-transparent bg-gradient-to-b from-transparent to-[#0d1b1c] px-2 md:px-3">
         <div className="block pb-10 pt-24 flex items-center px-1 justify-between w-full max-w-7xl mx-auto">
           <div className="md:max-w-[320px] w-full space-y-3">
             <h3

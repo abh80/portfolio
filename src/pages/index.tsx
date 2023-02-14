@@ -10,7 +10,6 @@ import ProjectCard from "@/components/ProjectCard";
 import * as process from "process";
 import MetaResolver from "@/components/MetaResolver";
 import { motion, Variants } from "framer-motion";
-import WavyText from "@/components/anim/WavyText";
 
 const kanit = Kanit({ subsets: ["latin"], weight: ["600", "500", "400"] });
 const roboto = Roboto({
@@ -19,6 +18,16 @@ const roboto = Roboto({
 });
 
 export default function Home({ projects }: { projects: any }) {
+  const containerVariant: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  };
   return (
     <>
       <MetaResolver
@@ -34,37 +43,44 @@ export default function Home({ projects }: { projects: any }) {
       <ViewItem
         header={
           <div className="w-full max-w-7xl mx-auto px-3 relative lg:px-5">
-            <motion.div
-              transition={{
-                repeatType: "loop",
-                repeat: Infinity,
-                type: "tween",
-                duration: 2.2,
-              }}
-              animate={{ y: [10, -10, 10] }}
-            >
-              <WavyText
+            <motion.div>
+              <motion.h2
+                transition={{ delay: 0.1 }}
+                variants={containerVariant}
+                initial="hidden"
+                animate="visible"
                 className={
                   "font-bold text-[1rem] ml-0.5 text-sky-400 md:text-[1.7rem] " +
                   kanit.className
                 }
-                text="Home"
-              />
+              >
+                Home
+              </motion.h2>
             </motion.div>
-            <WavyText
-              text="Hi, I am Abh80"
+            <motion.h1
+              variants={containerVariant}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.2 }}
               className={
                 "text-3xl font-bold mt-2 text-slate-200 md:text-7xl " + roboto
               }
-            />
-            <WavyText
+            >
+              Hi, I am Abh80
+            </motion.h1>
+            <motion.h3
+              variants={containerVariant}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.3 }}
               className={
                 "mt-3 text-[1rem] text-slate-400 font-semibold md:text-[1.2rem] max-w-[300px] lg:max-w-fit md:max-w-[600px] md:ml-1 " +
                 roboto.className
               }
-              text="a Java / Javascript developer,
-              interested in web and android applications"
-            />
+            >
+              a <b className="text-slate-300">Java / Javascript developer</b>,
+              interested in web and android applications
+            </motion.h3>
           </div>
         }
       >

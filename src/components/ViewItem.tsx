@@ -22,6 +22,7 @@ export default function ViewItem({
   header?: JSX.Element;
 }) {
   const router = useRouter();
+  const [isMobile, setMobile] = useState(false);
   const [active, setActive]: [string | null, React.SetStateAction<any>] =
     useState(null);
   const [articles, setArticles]: [Array<string>, React.SetStateAction<any>] =
@@ -29,6 +30,7 @@ export default function ViewItem({
   const [curr_hash, setHash]: [string | null, React.SetStateAction<any>] =
     useState("");
   useEffect(() => {
+    setMobile(window.innerWidth < 768);
     setHash(window.location.hash?.replace("#", ""));
     setActive(window.location.pathname);
     setArticles(
@@ -64,9 +66,13 @@ export default function ViewItem({
         <div className="p-2 w-full max-w-7xl mx-auto">
           <motion.div
             className="max-w-fit"
-            animate={{
-              scale: [1, 1.2, 1, 1.2, 1],
-            }}
+            animate={
+              isMobile
+                ? {}
+                : {
+                    scale: [1, 1.2, 1, 1.2, 1],
+                  }
+            }
             transition={{ duration: 1, type: "spring" }}
           >
             <Link href={"/"} className={"flex gap-2 w-fit"}>

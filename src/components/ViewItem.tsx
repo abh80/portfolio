@@ -1,4 +1,4 @@
-import React, { MouseEvent, useEffect, useState } from "react";
+import React, { MouseEvent, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Roboto } from "@next/font/google";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import ChildMenuItem from "@/components/ChildMenuItem";
 import { useRouter } from "next/router";
 import { AnimatePresence, motion, useAnimation, Variants } from "framer-motion";
 import { setTheme } from "@/utils/Theme";
+import useOnClickOutside from "@/providers/useOnClickOutsideHook";
 
 const roboto = Roboto({
   weight: ["400", "700", "500", "900"],
@@ -22,7 +23,7 @@ export default function ViewItem({
   children: JSX.Element;
   header?: JSX.Element;
 }) {
-  let animationDropDown = useAnimation();
+  const ref = useRef();
   const router = useRouter();
   const [isMobile, setMobile] = useState(false);
   const [active, setActive]: [string | null, React.SetStateAction<any>] =
@@ -35,6 +36,10 @@ export default function ViewItem({
     useState(false);
   const [showThemePref, setThemePref]: [boolean, React.SetStateAction<any>] =
     useState(false);
+  const [showMenu, setShowMenu]: [boolean, React.SetStateAction<any>] =
+    useState(false);
+  //@ts-ignore
+  useOnClickOutside(ref, () => setShowMenu(false));
   useEffect(() => {
     setMobile(window.innerWidth < 768);
     setHash(window.location.hash?.replace("#", ""));
@@ -87,6 +92,18 @@ export default function ViewItem({
       opacity: 0,
     },
   };
+  const mobileThemeButtonVariants: Variants = {
+    dark: {
+      x: "0%",
+      y: [0, -50, 0],
+    },
+    light: {
+      x: "-50%",
+      y: [0, -50, 0],
+    },
+  };
+  // @ts-ignore
+  // @ts-ignore
   return (
     <>
       <header
@@ -118,8 +135,13 @@ export default function ViewItem({
               </h1>
             </Link>
           </div>
+          <div className="block md:hidden relative">
+            <button onClick={() => setShowMenu(true)}>
+              <i className="fa-solid fa-bars"></i>
+            </button>
+          </div>
           <div
-            className="hidden md:block"
+            className="hidden md:block relative"
             tabIndex={0}
             onFocus={() => {
               setThemePref(true);
@@ -144,7 +166,7 @@ export default function ViewItem({
                   onAnimationEnd={() => setThemePref(false)}
                   id={"theme-preference"}
                   className={
-                    "absolute backdrop-blur-md rounded-md dark:bg-slate-800 bg-white shadow-md mt-5 z-[40] " +
+                    "absolute backdrop-blur-md rounded-md dark:bg-slate-800 bg-white shadow-md mt-5 z-[40] right-0 w-32 " +
                     roboto.className
                   }
                 >
@@ -303,6 +325,83 @@ export default function ViewItem({
           </div>
         </div>
       </footer>
+      <AnimatePresence>
+        {showMenu ? (
+          <div
+            className="absolute top-0 w-full right-0 z-[9999] md:hidden"
+            //@ts-ignore
+            ref={ref}
+          >
+            <motion.div
+              id={"menu"}
+              className="border border-slate-900/20 shadow-md bg-white rounded-md dark:bg-slate-800 m-2"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+              }}
+              exit={{ opacity: 0, scale: 0.9 }}
+            >
+              <div className="p-5 flex w-full items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Image
+                    src={
+                      isDark
+                        ? "/adaptive-logo-dark.svg"
+                        : "/adaptive-logo-light.svg"
+                    }
+                    alt={"Main logo for header"}
+                    width={25}
+                    height={25}
+                  />
+                  <span className={"text-lg font-bold " + roboto.className}>
+                    Menu
+                  </span>
+                </div>
+                <button onClick={() => setShowMenu(false)}>
+                  <i className="fa-solid fa-xmark text-lg"></i>
+                </button>
+              </div>
+              <div className="mt-2 h-6 dark:border-t border-slate-200/30"></div>
+
+              <ul className="px-10 flex flex-col gap-5 mb-4">
+                {menuPages1.map((x, i) => (
+                  <Link href={x.url} key={i} className="font-semibold text-md">
+                    {x.title}
+                  </Link>
+                ))}
+                <div className="flex mt-10">
+                  <button
+                    className="w-fit p-2 rounded-md bg-blue-400/10 items-left overflow-hidden"
+                    onClick={() => handleThemeChange(isDark ? "light" : "dark")}
+                  >
+                    <motion.div
+                      className="flex flex-reverse w-[200%]"
+                      variants={mobileThemeButtonVariants}
+                      animate={isDark ? "dark" : "light"}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <i
+                        className={
+                          "fa-solid cursor-pointer text-sky-500 text-xl block mb-2 self-start w-[50%] " +
+                          "fa-moon"
+                        }
+                      ></i>
+                      <i
+                        className={
+                          "fa-solid cursor-pointer text-sky-500 text-xl block mb-2 self-start w-[50%] " +
+                          "fa-lightbulb"
+                        }
+                      ></i>
+                    </motion.div>
+                    <span>{isDark ? "Dark Mode" : "Light Mode"}</span>
+                  </button>
+                </div>
+              </ul>
+            </motion.div>
+          </div>
+        ) : null}
+      </AnimatePresence>
     </>
   );
 }

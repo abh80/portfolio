@@ -7,7 +7,6 @@ const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] });
 export default function MenuItem({
   title,
   icon,
-  active,
   bgColor,
   url,
 }: {
@@ -35,40 +34,30 @@ export default function MenuItem({
     },
   };
   return (
-    <motion.div
-      variants={containerVariants}
-      whileHover="hover"
-      whileTap="click"
+    <Link
+      href={url}
+      className={"flex group w-full cursor-pointer gap-3 items-center"}
     >
-      <Link
-        href={url}
-        className={"flex group w-full cursor-pointer gap-3 items-center"}
-      >
-        {icon ? (
-          <div
-            className={[
-              `align-middle transition-all bg-slate-400/50 px-1 rounded-md items-center`,
-              active ? bgColor : "",
-              active ? "text-white" : "text-slate-300",
-              `group-hover:bg-blue-400`,
-            ].join(" ")}
-          >
-            <i className="fa-solid fa-house fa-sm"></i>
-          </div>
-        ) : null}
-        <motion.span
-          variants={active ? {} : childVariants}
+      {icon ? (
+        <div
           className={[
-            "text-[0.9rem] font-semibold align-middle transition-color",
-            active
-              ? "text-slate-200"
-              : "text-slate-500 group-hover:text-slate-300",
-            roboto.className,
+            `align-middle transition-all bg-slate-400/50 px-1 rounded-md items-center text-white`,
+            bgColor,
           ].join(" ")}
         >
-          {title}
-        </motion.span>
-      </Link>
-    </motion.div>
+          <i className="fa-solid fa-house fa-sm"></i>
+        </div>
+      ) : null}
+      <span
+        className={[
+          "text-[0.9rem] font-semibold align-middle transition-color",
+          "dark:text-slate-200",
+
+          roboto.className,
+        ].join(" ")}
+      >
+        {title}
+      </span>
+    </Link>
   );
 }

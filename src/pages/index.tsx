@@ -63,7 +63,8 @@ export default function Home({ projects }: { projects: any }) {
               animate="visible"
               transition={{ delay: 0.2 }}
               className={
-                "text-3xl font-bold mt-2 text-slate-200 md:text-7xl " + roboto
+                "text-3xl font-bold mt-2 dark:text-slate-200 md:text-7xl " +
+                roboto
               }
             >
               Hi, I am Abh80
@@ -74,24 +75,31 @@ export default function Home({ projects }: { projects: any }) {
               animate="visible"
               transition={{ delay: 0.3 }}
               className={
-                "mt-3 text-[1rem] text-slate-400 font-semibold md:text-[1.2rem] max-w-[300px] lg:max-w-fit md:max-w-[600px] md:ml-1 " +
+                "mt-3 text-[1rem] dark:text-slate-400 font-semibold md:text-[1.2rem] max-w-[300px] lg:max-w-fit md:max-w-[600px] md:ml-1 " +
                 roboto.className
               }
             >
-              a <b className="text-slate-300">Java / Javascript developer</b>,
-              interested in web and android applications
+              a{" "}
+              <b className="dark:text-slate-300">Java / Javascript developer</b>
+              , interested in web and android applications
             </motion.h3>
           </div>
         }
       >
         <>
           <section id={"about-me"}>
-            <h1 className={kanit.className + " text-white text-2xl font-bold "}>
+            <h1
+              className={
+                kanit.className + " dark:text-white text-2xl font-bold "
+              }
+            >
               <Link href={"#about-me"}>About Me</Link>
             </h1>
             <div className="h-5"></div>
             <h2
-              className={kanit.className + " text-white text-lg leading-loose "}
+              className={
+                kanit.className + " dark:text-white text-lg leading-loose "
+              }
             >
               Abh80 is a highly motivated individual currently enrolled in high
               school. He possess a strong interest in the field of programming
@@ -102,7 +110,9 @@ export default function Home({ projects }: { projects: any }) {
             </h2>
             <div className={"h-5 "} />
             <h2
-              className={kanit.className + " text-white text-lg leading-loose "}
+              className={
+                kanit.className + " dark:text-white text-lg leading-loose "
+              }
             >
               My main interest in web development started in May 2020 when I
               started developing some static webpages and loved the frontend
@@ -112,20 +122,24 @@ export default function Home({ projects }: { projects: any }) {
               Java and Android along with it I also learnt the spring boot.
             </h2>
             <div className="h-5" />
-            <h2 className={kanit.className + " text-white text-lg "}>
+            <h2 className={kanit.className + " dark:text-white text-lg "}>
               Along with programming my hobbies include listening to music,
               playing video games.
             </h2>
           </section>
           <ViewItemDivider />
           <section id={"skills"}>
-            <h1 className={kanit.className + " text-white text-2xl font-bold"}>
+            <h1
+              className={
+                kanit.className + " dark:text-white text-2xl font-bold"
+              }
+            >
               <Link scroll={true} href={"#skills"}>
                 Skills
               </Link>
             </h1>
             <div className="h-5"></div>
-            <h2 className={kanit.className + " text-white text-lg"}>
+            <h2 className={kanit.className + " dark:text-white text-lg"}>
               I have experience with the following stacks / programming
               languages / tools :
             </h2>
@@ -138,13 +152,17 @@ export default function Home({ projects }: { projects: any }) {
           </section>
           <ViewItemDivider />
           <section id={"projects"}>
-            <h1 className={kanit.className + " text-white text-2xl font-bold"}>
+            <h1
+              className={
+                kanit.className + " dark:text-white text-2xl font-bold"
+              }
+            >
               <Link scroll={true} href={"#projects"}>
                 Projects
               </Link>
             </h1>
             <div className="h-5"></div>
-            <h2 className={kanit.className + " text-white text-lg"}>
+            <h2 className={kanit.className + " dark:text-white text-lg"}>
               Here some pinned projects that I want to show on first first page
               but seems like for more you may want to go to{" "}
               <Link href={"/projects"} className="text-sky-400 hover:underline">

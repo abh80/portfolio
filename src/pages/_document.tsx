@@ -1,5 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import React from "react";
+import Script from "next/script";
 
 export default function Document() {
   return (
@@ -9,6 +10,7 @@ export default function Document() {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
         />
+        <Script src="/js/theme.js" strategy="afterInteractive" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
@@ -17,7 +19,7 @@ export default function Document() {
           referrerPolicy="no-referrer"
         />
       </Head>
-      <body className={"bg-[#001e29]"}>
+      <body className={"dark:bg-[#001e29]"}>
         <Main />
         <NextScript />
       </body>

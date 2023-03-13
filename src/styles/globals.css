@@ -8,7 +8,6 @@ html, body {
     height: 100%;
     overflow-y: auto;
     overflow-x: visible;
-    background-color: black;
     scroll-behavior: smooth;
-    color-scheme: dark;
+    color-scheme: light dark;
 }

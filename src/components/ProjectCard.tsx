@@ -18,7 +18,7 @@ export default function ProjectCard({ project }: { project: any }) {
   return (
     <div
       className={
-        "hover:cursor-pointer overflow-hidden relative border-2 border-sky-500 gap-2 rounded-md p-3 w-96 bg-sky-700/30 shadow-md z-20 hover:-translate-y-2 relative transform transition-all backdrop-blur-xl shadow-sky-500 grid grid-flow-row " +
+        "hover:cursor-pointer overflow-hidden relative border-2 border-sky-500 gap-2 rounded-md p-3 w-96 dark:bg-sky-700/30 shadow-md z-20 hover:-translate-y-2 relative transform transition-all backdrop-blur-xl dark:shadow-sky-500 grid grid-flow-row " +
         styles.card
       }
     >
@@ -31,7 +31,8 @@ export default function ProjectCard({ project }: { project: any }) {
       >
         <h2
           className={
-            "text-sky-300 text-md font-bold hover:underline " + kanit.className
+            "dark:text-sky-300 text-sky-400 text-md font-bold hover:underline " +
+            kanit.className
           }
         >
           {project.full_name}
@@ -39,13 +40,13 @@ export default function ProjectCard({ project }: { project: any }) {
       </Link>
       <i
         className={
-          "fa-solid fa-up-right-from-square fa-sm text-white absolute top-5 right-3 " +
+          "fa-solid fa-up-right-from-square fa-sm dark:text-white absolute top-5 right-3 " +
           styles["ext-icon"]
         }
       ></i>
       <span
         className={
-          "fa-solid fa-arrow-right fa-sm text-white absolute top-5 right-3 " +
+          "fa-solid fa-arrow-right fa-sm dark:text-white absolute top-5 right-3 " +
           styles["int-icon"]
         }
       ></span>
@@ -59,7 +60,8 @@ export default function ProjectCard({ project }: { project: any }) {
       >
         <h1
           className={
-            "text-white text-xl font-bold hover:underline " + kanit.className
+            "dark:text-white text-xl font-bold hover:underline " +
+            kanit.className
           }
         >
           {project.name}
@@ -68,20 +70,20 @@ export default function ProjectCard({ project }: { project: any }) {
       <div className="flex gap-1 flex-wrap">
         {project.topics.map((x: string, i: number) => (
           <div
-            className="text-white text-md px-2 py-0.5 rounded-full bg-sky-700"
+            className="dark:text-white text-md px-2 py-0.5 rounded-full dark:bg-sky-700 bg-sky-400"
             key={i}
           >
             {x}
           </div>
         ))}
       </div>
-      <h2 className="text-white text-lg font-semibold ">
+      <h2 className="dark:text-white text-lg font-semibold ">
         {project.description}
       </h2>
       <div className="grid grid-flow-col mb-1 gap-1">
         <div className="flex gap-1 h-full align-middle items-center ">
-          <i className="fa-regular fa-star fa-sm text-white"></i>
-          <span className={roboto.className + " text-md text-white "}>
+          <i className="fa-regular fa-star fa-sm dark:text-white"></i>
+          <span className={roboto.className + " text-md dark:text-white "}>
             {project.stargazers_count}
           </span>
         </div>

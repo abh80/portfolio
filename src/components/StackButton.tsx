@@ -25,12 +25,15 @@ export default function StackButton({
         e.currentTarget.classList.remove(styles["is-hovered"]);
       }}
       className={
-        "flex items-center rounded-md border-2 border-sky-500 py-1 px-2 transition-all hover:bg-sky-500 " +
+        "flex items-center rounded-md border-2 border-sky-500 py-1 px-2 transition-all hover:bg-sky-500 group " +
         styles["stack-link-btn"]
       }
     >
       <span
-        className={"text-white flex gap-2 items-center " + roboto.className}
+        className={
+          "dark:text-white flex gap-2 items-center group-hover:text-white transition-all " +
+          roboto.className
+        }
       >
         <i className={icon + " text-xl"}></i> <p className="text-lg">{name}</p>
         <i

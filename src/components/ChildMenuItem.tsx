@@ -13,51 +13,29 @@ export default function ChildMenuItem({
   active?: boolean;
   hash: string;
 }) {
-  const containerVariants: Variants = {
-    hover: {},
-    click: {},
-  };
-  const childVariants: Variants = {
-    hover: {
-      scale: 1.2,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-      },
-    },
-    click: {
-      scale: 0.9,
-    },
-  };
   return (
-    <motion.div
-      variants={containerVariants}
-      whileHover="hover"
-      whileTap="click"
-    >
+    <div>
       <Link
         data-hash={hash}
         shallow={true}
         href={"#" + hash}
         className={
-          "flex group w-full cursor-pointer gap-3 border-l border-slate-600 hover:border-slate-500 -ml-px " +
-          (active ? "border-slate-400" : "")
+          "flex group w-full cursor-pointer gap-3 border-l hover:border-slate-700 border-slate-400 dark:border-slate-600 hover:dark:border-slate-500 -ml-px " +
+          (active ? "dark:border-slate-400 border-slate-900" : "")
         }
       >
-        <motion.span
-          variants={active ? {} : childVariants}
+        <span
           className={[
-            "text-[1rem] font-semibold align-middle  ml-5 capitalize",
+            "text-[1rem] font-semibold align-middle ml-5 capitalize",
             active
-              ? "text-slate-200"
-              : "text-slate-500 group-hover:text-slate-300",
+              ? "dark:text-slate-200 text-slate-900"
+              : "dark:text-slate-500 dark:group-hover:text-slate-300 text-slate-600",
             roboto.className,
           ].join(" ")}
         >
           {title}
-        </motion.span>
+        </span>
       </Link>
-    </motion.div>
+    </div>
   );
 }

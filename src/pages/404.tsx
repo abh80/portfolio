@@ -1,8 +1,10 @@
-import ViewItem from "@/components/ViewItem";
 import MetaResolver from "@/components/MetaResolver";
-import { Kanit } from "@next/font/google";
+import { Kanit, Roboto } from "@next/font/google";
+import Link from "next/link";
 
 const kanit = Kanit({ weight: ["700", "500", "400"], subsets: ["latin"] });
+const roboto = Roboto({ weight: ["700", "500", "400"], subsets: ["latin"] });
+
 export default function NotFound() {
   return (
     <>
@@ -10,26 +12,26 @@ export default function NotFound() {
         title="This page does not exist"
         description="404 - Not Found"
       />
-      <ViewItem>
-        <div className="mt-10 space-y-10">
-          <h1
-            className={
-              kanit.className + " text-xl font-bold text-center w-full"
-            }
-          >
-            404 - Not Found
-          </h1>
-
-          <h2
-            className={
-              kanit.className + " text-lg font-semibold text-center w-full"
-            }
-          >
-            You are definitely lost right?
-          </h2>
-          <div className="h-96" />
-        </div>
-      </ViewItem>
+      <div className="w-full mx-auto text-center flex flex-col space-y-0.5 top-[50%] absolute -translate-y-1/2">
+        <h1 className={"text-3xl font-bold leading-loose " + kanit.className}>
+          This page does not exist !
+        </h1>
+        <h2
+          className={"text-2xl font-semibold leading-loose " + kanit.className}
+        >
+          {/* eslint-disable-next-line react/no-unescaped-entities */}
+          It's not easy to get lost, but its easy to get right back on track
+        </h2>
+        <Link
+          className={
+            "text-blue-400 hover:underline text-[1.3rem] text-bold mt-5 " +
+            roboto.className
+          }
+          href={"/"}
+        >
+          Back to homepage
+        </Link>
+      </div>
     </>
   );
 }

@@ -7,7 +7,7 @@ import MenuItem from "@/components/MenuItem";
 import { menuPages1 } from "@/utils/main";
 import ChildMenuItem from "@/components/ChildMenuItem";
 import { useRouter } from "next/router";
-import { motion, useAnimation, Variants } from "framer-motion";
+import { AnimatePresence, motion, useAnimation, Variants } from "framer-motion";
 import { setTheme } from "@/utils/Theme";
 
 const roboto = Roboto({
@@ -56,12 +56,12 @@ export default function ViewItem({
       if (document.body.scrollTop > h.offsetHeight) {
         h.classList.remove("dark:bg-[#0d1b1c]");
         h.classList.add("dark:bg-slate-900/[0.25]");
-        h.classList.remove("bg-white/95");
-        h.classList.add("bg-white");
+        // h.classList.remove("bg-white/95");
+        // h.classList.add("bg-white");
       } else {
         h.classList.add("dark:bg-[#0d1b1c]");
-        h.classList.add("bg-white/95");
-        h.classList.remove("bg-white");
+        // h.classList.add("bg-white/95");
+        // h.classList.remove("bg-white");
         h.classList.remove("dark:bg-slate-900/[0.25]");
       }
     });
@@ -69,15 +69,6 @@ export default function ViewItem({
       setDark(document.documentElement.classList.contains("dark"));
     });
   }, []);
-
-  useEffect(() => {
-    if (showThemePref) {
-      document.querySelector("#theme-preference")?.classList.remove("hidden");
-      animationDropDown.start("open");
-    } else {
-      animationDropDown.start("close");
-    }
-  }, [showThemePref]);
 
   function handleThemeChange(t: string) {
     setTheme(t);
@@ -92,12 +83,15 @@ export default function ViewItem({
       opacity: 0,
       y: 20,
     },
+    fade: {
+      opacity: 0,
+    },
   };
   return (
     <>
       <header
         className={
-          "sticky top-0 w-full z-[999] backdrop-blur transition-colors dark:border-slate-50/[0.05] border-slate-900/[0.05] border-b-2 dark:bg-[#0d1b1c] bg-white/95 p-2 " +
+          "sticky top-0 w-full shadow-sm z-[999] backdrop-blur transition-colors dark:border-slate-50/[0.05] border-slate-900/[0.05] border-b-2 dark:bg-[#0d1b1c] bg-white/75 p-2 " +
           styles.mainHeader
         }
       >
@@ -111,11 +105,15 @@ export default function ViewItem({
                     : "/adaptive-logo-light.svg"
                 }
                 alt={"Main logo for header"}
-                width={30}
-                height={30}
+                width={isMobile ? 20 : 30}
+                height={isMobile ? 20 : 30}
               />
 
-              <h1 className={roboto.className + " dark:text-white text-2xl"}>
+              <h1
+                className={
+                  roboto.className + " dark:text-white md:text-2xl text-lg"
+                }
+              >
                 Abh80
               </h1>
             </Link>
@@ -136,39 +134,46 @@ export default function ViewItem({
                 (isDark ? "fa-moon" : "fa-lightbulb")
               }
             ></i>
-            <motion.div
-              variants={dropDownThemeVariants}
-              animate={animationDropDown}
-              initial="close"
-              id={"theme-preference"}
-              className={
-                "absolute backdrop-blur-md rounded-md dark:bg-slate-800 bg-white shadow-md mt-5 z-[40] hidden"
-              }
-            >
-              <ul className="flex flex-col dark:text-slate-300 text-slate-600">
-                <li
-                  onClick={() => handleThemeChange("light")}
-                  className="py-2 px-3 gap-2 flex cursor-pointer hover:bg-slate-400/50"
+            <AnimatePresence>
+              {showThemePref ? (
+                <motion.div
+                  variants={dropDownThemeVariants}
+                  animate="open"
+                  initial="close"
+                  exit="fade"
+                  onAnimationEnd={() => setThemePref(false)}
+                  id={"theme-preference"}
+                  className={
+                    "absolute backdrop-blur-md rounded-md dark:bg-slate-800 bg-white shadow-md mt-5 z-[40] " +
+                    roboto.className
+                  }
                 >
-                  <i className="fa-solid fa-lightbulb"></i>
-                  <span className="text-sm">Lights On</span>
-                </li>
-                <li
-                  className="py-2 px-3 gap-2 flex cursor-pointer hover:bg-slate-400/50"
-                  onClick={() => handleThemeChange("dark")}
-                >
-                  <i className="fa-solid fa-moon cursor-pointer"></i>
-                  <span className="text-sm">Lights Out</span>
-                </li>
-                <li
-                  onClick={() => handleThemeChange("def")}
-                  className="py-2 px-3 gap-2 flex cursor-pointer hover:bg-slate-400/50"
-                >
-                  <i className="fa-solid fa-desktop"></i>
-                  <span className="text-sm">Default</span>
-                </li>
-              </ul>
-            </motion.div>
+                  <ul className="flex flex-col dark:text-slate-300 text-slate-600">
+                    <li
+                      onClick={() => handleThemeChange("light")}
+                      className="py-2 px-3 gap-2 flex cursor-pointer hover:bg-slate-400/50"
+                    >
+                      <i className="fa-solid fa-lightbulb"></i>
+                      <span className="text-sm">Lights On</span>
+                    </li>
+                    <li
+                      className="py-2 px-3 gap-2 flex cursor-pointer hover:bg-slate-400/50"
+                      onClick={() => handleThemeChange("dark")}
+                    >
+                      <i className="fa-solid fa-moon cursor-pointer"></i>
+                      <span className="text-sm">Lights Out</span>
+                    </li>
+                    <li
+                      onClick={() => handleThemeChange("def")}
+                      className="py-2 px-3 gap-2 flex cursor-pointer hover:bg-slate-400/50"
+                    >
+                      <i className="fa-solid fa-desktop"></i>
+                      <span className="text-sm">Default</span>
+                    </li>
+                  </ul>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
           </div>
         </div>
       </header>
@@ -240,7 +245,7 @@ export default function ViewItem({
           <div className="md:max-w-[320px] w-full space-y-3">
             <h3
               className={
-                "font-bold dark:dark:text-slate-400 text-md leading-loose " +
+                "font-bold dark:dark:text-slate-400 md:text-md text-sm leading-loose " +
                 roboto.className
               }
             >
@@ -248,7 +253,8 @@ export default function ViewItem({
             </h3>
             <h4
               className={
-                "font-semibold dark:text-slate-300 text-sm " + roboto.className
+                "font-semibold dark:text-slate-300 md:text-sm text-xs " +
+                roboto.className
               }
             >
               I am a Java and Javascript developer. I am very interested in
@@ -257,10 +263,10 @@ export default function ViewItem({
             </h4>
           </div>
         </div>
-        <div className="block border-t border-slate-200/10 pb-32 pt-10 flex flex-wrap items-center px-1 justify-between w-full max-w-7xl mx-auto">
+        <div className="block border-t dark:border-slate-200/10 border-slate-900/20 pb-32 pt-10 flex flex-wrap items-center px-1 justify-between w-full max-w-7xl mx-auto">
           <div className="flex flex-wrap items-center gap-3">
             <Image
-              className="h-5 w-5 opacity-50"
+              className="h-5 md:w-5 opacity-50 md:block hidden"
               src={
                 isDark ? "/adaptive-logo-dark.svg" : "/adaptive-logo-light.svg"
               }
@@ -270,7 +276,8 @@ export default function ViewItem({
             />
             <h5
               className={
-                "dark:text-slate-400 font-semibold " + roboto.className
+                "dark:text-slate-400 font-semibold text-xs md:text-base " +
+                roboto.className
               }
             >
               Copyright © {new Date().getFullYear()} Abh80
@@ -281,8 +288,18 @@ export default function ViewItem({
             <Link
               target="_blank"
               href="https://github.com/abh80/portfolio"
-              className="devicon-github-original dark:text-slate-400 hover:dark:text-slate-300 cursor-pointer text-[1.2rem]"
+              className="devicon-github-original dark:text-slate-400 hover:dark:text-slate-300 cursor-pointer text-[1.2rem] md:block hidden"
             ></Link>
+            <Link
+              target="_blank"
+              href="https://github.com/abh80/portfolio"
+              className={
+                "dark:text-slate-400 hover:dark:text-slate-300 cursor-pointer text-xs block md:hidden underline " +
+                roboto.className
+              }
+            >
+              View on Github
+            </Link>
           </div>
         </div>
       </footer>

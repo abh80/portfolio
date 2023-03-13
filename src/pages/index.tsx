@@ -90,7 +90,8 @@ export default function Home({ projects }: { projects: any }) {
           <section id={"about-me"}>
             <h1
               className={
-                kanit.className + " dark:text-white text-2xl font-bold "
+                kanit.className +
+                " dark:text-white md:text-2xl text-xl font-bold "
               }
             >
               <Link href={"#about-me"}>About Me</Link>
@@ -98,7 +99,8 @@ export default function Home({ projects }: { projects: any }) {
             <div className="h-5"></div>
             <h2
               className={
-                kanit.className + " dark:text-white text-lg leading-loose "
+                kanit.className +
+                " dark:text-white md:text-lg text-base leading-loose "
               }
             >
               Abh80 is a highly motivated individual currently enrolled in high
@@ -111,7 +113,8 @@ export default function Home({ projects }: { projects: any }) {
             <div className={"h-5 "} />
             <h2
               className={
-                kanit.className + " dark:text-white text-lg leading-loose "
+                kanit.className +
+                " dark:text-white md:text-lg text-base leading-loose "
               }
             >
               My main interest in web development started in May 2020 when I
@@ -131,7 +134,8 @@ export default function Home({ projects }: { projects: any }) {
           <section id={"skills"}>
             <h1
               className={
-                kanit.className + " dark:text-white text-2xl font-bold"
+                kanit.className +
+                " dark:text-white md:text-2xl text-xl font-bold"
               }
             >
               <Link scroll={true} href={"#skills"}>
@@ -139,7 +143,11 @@ export default function Home({ projects }: { projects: any }) {
               </Link>
             </h1>
             <div className="h-5"></div>
-            <h2 className={kanit.className + " dark:text-white text-lg"}>
+            <h2
+              className={
+                kanit.className + " dark:text-white md:text-lg text-base"
+              }
+            >
               I have experience with the following stacks / programming
               languages / tools :
             </h2>
@@ -154,7 +162,8 @@ export default function Home({ projects }: { projects: any }) {
           <section id={"projects"}>
             <h1
               className={
-                kanit.className + " dark:text-white text-2xl font-bold"
+                kanit.className +
+                " dark:text-white md:text-2xl text-xl font-bold"
               }
             >
               <Link scroll={true} href={"#projects"}>
@@ -162,7 +171,11 @@ export default function Home({ projects }: { projects: any }) {
               </Link>
             </h1>
             <div className="h-5"></div>
-            <h2 className={kanit.className + " dark:text-white text-lg"}>
+            <h2
+              className={
+                kanit.className + " dark:text-white md:text-lg text-base"
+              }
+            >
               Here some pinned projects that I want to show on first first page
               but seems like for more you may want to go to{" "}
               <Link href={"/projects"} className="text-sky-400 hover:underline">

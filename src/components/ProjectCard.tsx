@@ -31,7 +31,7 @@ export default function ProjectCard({ project }: { project: any }) {
       >
         <h2
           className={
-            "dark:text-sky-300 text-sky-400 text-md font-bold hover:underline " +
+            "dark:text-sky-300 text-sky-400 md:text-md text-sm font-bold hover:underline " +
             kanit.className
           }
         >
@@ -60,7 +60,7 @@ export default function ProjectCard({ project }: { project: any }) {
       >
         <h1
           className={
-            "dark:text-white text-xl font-bold hover:underline " +
+            "dark:text-white md:text-xl text-lg font-bold hover:underline " +
             kanit.className
           }
         >
@@ -70,20 +70,24 @@ export default function ProjectCard({ project }: { project: any }) {
       <div className="flex gap-1 flex-wrap">
         {project.topics.map((x: string, i: number) => (
           <div
-            className="dark:text-white text-md px-2 py-0.5 rounded-full dark:bg-sky-700 bg-sky-400"
+            className="dark:text-white md:text-md text-xs px-2 py-0.5 rounded-full dark:bg-sky-700 bg-sky-400"
             key={i}
           >
             {x}
           </div>
         ))}
       </div>
-      <h2 className="dark:text-white text-lg font-semibold ">
+      <h2 className="dark:text-white md:text-lg text-base font-semibold ">
         {project.description}
       </h2>
       <div className="grid grid-flow-col mb-1 gap-1">
         <div className="flex gap-1 h-full align-middle items-center ">
-          <i className="fa-regular fa-star fa-sm dark:text-white"></i>
-          <span className={roboto.className + " text-md dark:text-white "}>
+          <i className="fa-regular fa-star md:fa-sm fa-xs dark:text-white"></i>
+          <span
+            className={
+              roboto.className + " md:text-md text-sm dark:text-white "
+            }
+          >
             {project.stargazers_count}
           </span>
         </div>
@@ -92,7 +96,7 @@ export default function ProjectCard({ project }: { project: any }) {
             <Image
               src={x.avatar_url}
               className={
-                "rounded-full w-8 h-8 transform absolute bg-black ring-2 ring-sky-700"
+                "rounded-full md:w-8 md:h-8 w-6 h-6 transform absolute bg-black ring-2 ring-sky-700"
               }
               style={{ left: i * 10 + i * 10 }}
               key={i}

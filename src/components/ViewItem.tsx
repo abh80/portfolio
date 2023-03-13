@@ -121,6 +121,7 @@ export default function ViewItem({
             </Link>
           </div>
           <div
+            className="hidden md:block"
             tabIndex={0}
             onFocus={() => {
               setThemePref(true);
@@ -129,7 +130,12 @@ export default function ViewItem({
               setThemePref(false);
             }}
           >
-            <i className="fa-solid fa-moon cursor-pointer text-sky-500 text-xl"></i>
+            <i
+              className={
+                "fa-solid cursor-pointer text-sky-500 text-xl " +
+                (isDark ? "fa-moon" : "fa-lightbulb")
+              }
+            ></i>
             <motion.div
               variants={dropDownThemeVariants}
               animate={animationDropDown}

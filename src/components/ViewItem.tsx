@@ -7,7 +7,7 @@ import MenuItem from "@/components/MenuItem";
 import { menuPages1 } from "@/utils/main";
 import ChildMenuItem from "@/components/ChildMenuItem";
 import { useRouter } from "next/router";
-import { AnimatePresence, motion, useAnimation, Variants } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import { setTheme } from "@/utils/Theme";
 import useOnClickOutside from "@/providers/useOnClickOutsideHook";
 
@@ -209,7 +209,7 @@ export default function ViewItem({
       <div
         id={"main-content"}
         className={
-          "max-w-7xl w-full mx-auto pt-5 relative lg:flex lg:gap-8 " +
+          "max-w-7xl w-full mx-auto pt-5 relative lg:flex lg:gap-8 min-h-[100vh] " +
           styles.mainContent
         }
       >

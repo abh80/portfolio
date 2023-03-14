@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Roboto } from "@next/font/google";
+import { roboto } from "@/providers/font";
 import Link from "next/link";
 import styles from "../styles/Component.module.css";
 import MenuItem from "@/components/MenuItem";
@@ -10,11 +10,6 @@ import { useRouter } from "next/router";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { setTheme } from "@/utils/Theme";
 import useOnClickOutside from "@/providers/useOnClickOutsideHook";
-
-const roboto = Roboto({
-  weight: ["400", "700", "500", "900"],
-  subsets: ["latin"],
-});
 
 export default function ViewItem({
   children,

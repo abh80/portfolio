@@ -1,4 +1,3 @@
-import { Kanit, Roboto } from "@next/font/google";
 import ViewItem from "@/components/ViewItem";
 import Link from "next/link";
 import React from "react";
@@ -10,13 +9,7 @@ import ProjectCard from "@/components/ProjectCard";
 import * as process from "process";
 import MetaResolver from "@/components/MetaResolver";
 import { motion, Variants } from "framer-motion";
-
-const kanit = Kanit({ subsets: ["latin"], weight: ["600", "500", "400"] });
-const roboto = Roboto({
-  weight: ["400", "700", "500", "900"],
-  subsets: ["latin"],
-});
-
+import { kanit, roboto } from "@/providers/font";
 export default function Home({ projects }: { projects: any }) {
   const containerVariant: Variants = {
     hidden: {

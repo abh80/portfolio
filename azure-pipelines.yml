@@ -22,7 +22,7 @@ steps:
 
 - task: AzureCLI@2
   inputs:
-    azureSubscription: '${{sub_name}}'
+    azureSubscription: '${{variables.sub_name}}'
     scriptLocation: 'inlineScript'
     inlineScript: 'vercel --token $(VercelToken) --prod'
     addSpnToEnvironment: true

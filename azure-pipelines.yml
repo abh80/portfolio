@@ -6,7 +6,7 @@ pool:
 
 variables:
   VercelToken: $(VercelToken)
-  AzureSubscription: $(AzureSubscription)
+  sub_name: $(sub_name)
 
 steps:
 - task: NodeTool@0
@@ -22,7 +22,7 @@ steps:
 
 - task: AzureCLI@2
   inputs:
-    azureSubscription: '${sub_name}'
+    azureSubscription: ${sub_name}
     scriptLocation: 'inlineScript'
     inlineScript: 'vercel --token $(VercelToken) --prod'
     addSpnToEnvironment: true

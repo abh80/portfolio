@@ -255,7 +255,7 @@ export default function ViewItem({
             ) : null}
           </div>
         </div>
-        <div className="p-2 px-3 lg:px-5">{children}</div>
+        <div className="p-2 px-3 lg:px-5 w-full">{children}</div>
       </div>
       <footer className="w-full mx-auto bg-transparent dark:bg-gradient-to-b dark:from-transparent dark:to-[#0d1b1c] px-2 md:px-3">
         <div className="block pb-10 pt-24 flex items-center px-1 justify-between w-full max-w-7xl mx-auto">

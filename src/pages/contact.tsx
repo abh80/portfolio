@@ -3,6 +3,7 @@ import MetaResolver from "@/components/MetaResolver";
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import { kanit, roboto } from "@/providers/font";
+import Link from "next/link";
 
 export default function ContactPage() {
   const containerVariant: Variants = {
@@ -35,7 +36,7 @@ export default function ContactPage() {
                   kanit.className
                 }
               >
-                Home
+                Contact
               </motion.h2>
             </motion.div>
             <motion.h1
@@ -48,26 +49,47 @@ export default function ContactPage() {
                 roboto
               }
             >
-              Hi, I am Abh80
+              Lets Connect!
             </motion.h1>
-            <motion.h3
-              variants={containerVariant}
-              initial="hidden"
-              animate="visible"
-              transition={{ delay: 0.3 }}
-              className={
-                "mt-3 text-[1rem] dark:text-slate-400 font-semibold md:text-[1.2rem] max-w-[300px] lg:max-w-fit md:max-w-[600px] md:ml-1 " +
-                roboto.className
-              }
-            >
-              a{" "}
-              <b className="dark:text-slate-300">Java / Javascript developer</b>
-              , interested in web and android applications
-            </motion.h3>
           </div>
         }
       >
-        <div></div>
+        <div>
+          <section id={"email"}>
+            <h1
+              className={
+                kanit.className +
+                " dark:text-white md:text-2xl text-xl font-bold"
+              }
+            >
+              <Link scroll={true} href={"#email"}>
+                Email
+              </Link>
+            </h1>
+            <div className="h-5"></div>
+            <h2
+              className={
+                kanit.className + " dark:text-white md:text-lg text-base"
+              }
+            >
+              Feel free to reach via any of the following emails -
+              <div className="h-5"></div>
+            </h2>
+            <table className="w-full table-fixed text-left rounded-lg border-separate dark:border-slate-200/10 border">
+              <thead>
+                <tr>
+                  <th className="px-4">Contact</th>
+                  <th className="px-4">Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
       </ViewItem>
     </>
   );

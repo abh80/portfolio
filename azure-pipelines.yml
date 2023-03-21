@@ -1,0 +1,29 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  VercelToken: $(VercelToken)
+  sub_name: $(sub_name)
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '16.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm run build
+    npm run postbuild
+  displayName: 'Build Next.js app'
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: '${{variables.sub_name}}'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'vercel --token $(VercelToken) --prod'
+    addSpnToEnvironment: true
+  displayName: 'Deploy to Vercel'

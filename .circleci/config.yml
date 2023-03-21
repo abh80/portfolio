@@ -1,0 +1,39 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.7
+
+jobs:
+  build:
+    docker:
+      - image: cimg/node:16.10
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: npm run postbuild
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+  deploy:
+    docker:
+      - image: cimg/node:16.10
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run: npm i --prefix=$HOME/.local -g vercel 
+      - run: vercel deploy --yes --prod --token $VERCEL_TOKEN
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - new

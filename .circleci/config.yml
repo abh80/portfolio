@@ -15,14 +15,14 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - .next
+            - .
   deploy:
     docker:
       - image: cimg/node:16.10
     steps:
       - attach_workspace:
           at: ~/repo
-      - run: npm i -g vercel 
+      - run: npm i --prefix=$HOME/.local -g vercel 
       - run: vercel deploy --prod --token $VERCEL_TOKEN
 
 workflows:

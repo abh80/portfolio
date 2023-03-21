@@ -23,7 +23,7 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run: npm i --prefix=$HOME/.local -g vercel 
-      - run: vercel deploy --prod --token $VERCEL_TOKEN
+      - run: vercel deploy --yes --prod --token $VERCEL_TOKEN
 
 workflows:
   version: 2

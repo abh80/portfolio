@@ -18,11 +18,11 @@ jobs:
             - .next
   deploy:
     docker:
-      - image: circleci/python:3.9-buster-node-browsers-legacy
+      - image: cimg/node:16.10
     steps:
       - attach_workspace:
           at: ~/repo
-      - run: pip install vercel-cli
+      - run: npm i -g vercel 
       - run: vercel deploy --prod --token $VERCEL_TOKEN
 
 workflows:

@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@4.7
+  aws-cli: circleci/aws-cli@2.0.3
 
 jobs:
   build:
@@ -12,28 +13,56 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm run postbuild
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
-  deploy:
+
+  docker-build:
     docker:
       - image: cimg/node:16.10
     steps:
+      - checkout
+      - run:
+         name: Docker Build
+         command: |
+          echo "Building Docker Image"
+          docker build -t ${ecr}:latest .
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - ./
+  docker-tag-and-deploy:
+    docker:
+      - image: cimg/node:16.10
+    steps:
+      - aws-cli/setup
       - attach_workspace:
-          at: ~/repo
-      - run: npm i --prefix=$HOME/.local -g vercel 
-      - run: vercel deploy --yes --prod --token $VERCEL_TOKEN
+          at: ./
+      - run:
+          name : Tag Image
+          command: |
+            echo "Tagging Docker Image"
+            docker tag ${ecr}:latest ${ecr}:${CIRCLE_SHA1}
+      - run:
+          name : Deploy Image
+          command: |
+            echo "Deploying Image"
+            echo $AWS_SECRET_ACCESS_KEY | docker login -u AWS --password-stdin $ecr
+            docker push ${ecr}:${CIRCLE_SHA1}
+
 
 workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - build
-      - deploy:
-          requires:
-            - build
+      - build:
           filters:
             branches:
               only:
-                - new
+                new
+      - docker-build:
+          requires:
+            - build
+      - docker-tag-and-deploy:
+          requires:
+            - build
+            - docker-build
+        
+        

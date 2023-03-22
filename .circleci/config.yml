@@ -3,21 +3,9 @@ version: 2.1
 orbs:
   node: circleci/node@4.7
   aws-cli: circleci/aws-cli@2.0.3
+  docker: circleci/docker@2.2.0
 
 jobs:
-  setup-docker:
-    docker:
-      - image: docker:17.05.0-ce-git
-    steps:
-      - setup_remote_docker
-      - run:
-          name: Install dependencies
-          command: |
-            apk add --no-cache \
-            py-pip=9.0.0-r1
-            pip install \
-            docker-compose==1.12.0 \
-            awscli==1.11.76
   build:
     docker:
       - image: cimg/node:16.10
@@ -32,36 +20,15 @@ jobs:
       - image: docker
     steps:
       - checkout
-      - setup-docker
-      - run:
-         name: Docker Build
-         command: |
-          echo "Building Docker Image"
-          docker build -t ${ecr}:latest .
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - ./
-  docker-tag-and-deploy:
-    docker:
-      - image: docker
-    steps:
-      - setup-docker
-      - aws-cli/setup
-      - attach_workspace:
-          at: ./
-      - run:
-          name : Tag Image
-          command: |
-            echo "Tagging Docker Image"
-            docker tag ${ecr}:latest ${ecr}:${CIRCLE_SHA1}
-      - run:
-          name : Deploy Image
-          command: |
-            echo "Deploying Image"
-            echo $AWS_SECRET_ACCESS_KEY | docker login -u AWS --password-stdin $ecr
-            docker push ${ecr}:${CIRCLE_SHA1}
-
+      - docker/publish:
+            registry: '625831105170.dkr.ecr.ap-south-1.amazonaws.com' 
+            use-docker-credentials-store: false 
+            deploy: true 
+            image: portfolio-abh80 
+            aws-access-key-id: $AWS_ACCESS_KEY_ID
+            aws-secret-access-key: $AWS_SECRET_ACCESS_KEY
+      
+      
 
 workflows:
   version: 2
@@ -75,9 +42,5 @@ workflows:
       - docker-build:
           requires:
             - build
-      - docker-tag-and-deploy:
-          requires:
-            - build
-            - docker-build
         
         

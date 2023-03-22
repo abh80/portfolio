@@ -19,8 +19,7 @@ jobs:
     executor: aws-cli/default
     steps:
       - checkout
-      - aws-cli/setup:
-          version: '1'
+      - aws-cli/setup
       - docker/install-docker
       - run: 
           name: Login docker to AWS ECR

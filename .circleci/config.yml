@@ -16,7 +16,7 @@ jobs:
 
   docker-build:
     docker:
-      - image: cimg/node:16.10
+      - image: docker
     steps:
       - checkout
       - run:
@@ -30,7 +30,7 @@ jobs:
             - ./
   docker-tag-and-deploy:
     docker:
-      - image: cimg/node:16.10
+      - image: docker
     steps:
       - aws-cli/setup
       - attach_workspace:

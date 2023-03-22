@@ -17,10 +17,11 @@ jobs:
 
   docker-build:
     docker:
-      - image: ubuntu:20.04 
+      - image: cimg/node:16.10
     steps:
       - checkout
-      - aws-cli/setup
+      - aws-cli/setup:
+          version: '1'
       - docker/install-docker
       - run: 
           name: Login docker to AWS ECR
@@ -49,8 +50,6 @@ workflows:
             branches:
               only:
                 new
-      - docker-build:
-          requires:
-            - build
+      - docker-build
         
         

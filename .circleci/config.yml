@@ -3,7 +3,7 @@ version: 2.1
 orbs:
   node: circleci/node@4.7
   aws-cli: circleci/aws-cli@2.0.3
-  docker: circleci/docker@2.2.0
+  docker: circleci/docker@1.7.0
 
 jobs:
   build:
@@ -20,13 +20,23 @@ jobs:
       - image: docker
     steps:
       - checkout
-      - docker/publish:
-            registry: '625831105170.dkr.ecr.ap-south-1.amazonaws.com' 
-            use-docker-credentials-store: false 
-            deploy: true 
-            image: portfolio-abh80 
-            aws-access-key-id: $AWS_ACCESS_KEY_ID
-            aws-secret-access-key: $AWS_SECRET_ACCESS_KEY
+      - aws-cli/setup
+      - docker/install-docker
+      - run: 
+          name: Login docker to AWS ECR
+          command: $(aws ecr get-login-password --region $region) | docker login --username AWS --password-stdin $ecr
+      - run:
+          name: Build Docker File
+          command : |
+            echo "Building docker file..."
+            docker build -t ${ecr}:${CIRCLE_SHA1} .
+      - run:
+          name: Push Docker Image
+          command: |
+            echo "Pushing image..."
+            docker push ${ecr}:${CIRCLE_SHA1}
+
+      
       
       
 

@@ -5,6 +5,19 @@ orbs:
   aws-cli: circleci/aws-cli@2.0.3
 
 jobs:
+  setup-docker:
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - setup_remote_docker
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache \
+            py-pip=9.0.0-r1
+            pip install \
+            docker-compose==1.12.0 \
+            awscli==1.11.76
   build:
     docker:
       - image: cimg/node:16.10
@@ -19,6 +32,7 @@ jobs:
       - image: docker
     steps:
       - checkout
+      - setup-docker
       - run:
          name: Docker Build
          command: |
@@ -32,6 +46,7 @@ jobs:
     docker:
       - image: docker
     steps:
+      - setup-docker
       - aws-cli/setup
       - attach_workspace:
           at: ./

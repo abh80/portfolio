@@ -35,10 +35,6 @@ jobs:
             skip-when-tags-exist: false 
             region: $region 
             tag: ${CIRCLE_SHA1} 
-      
-      
-      
-      
 
 workflows:
   version: 2
@@ -49,6 +45,8 @@ workflows:
             branches:
               only:
                 new
-      - docker-build
+      - docker-build:
+          requires:
+            - build
         
         

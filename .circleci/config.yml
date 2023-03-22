@@ -2,8 +2,8 @@ version: 2.1
 
 orbs:
   node: circleci/node@4.7
-  aws-cli: circleci/aws-cli@2.0.3
   docker: circleci/docker@1.7.0
+  aws-ecr: circleci/aws-ecr@8.2.1
 
 jobs:
   build:
@@ -16,25 +16,26 @@ jobs:
       - run: npm run postbuild
 
   docker-build:
-    executor: aws-cli/default
+    executor: aws-ecr/default
     steps:
       - checkout
-      - aws-cli/setup
-      - docker/install-docker
-      - run: 
-          name: Login docker to AWS ECR
-          command: $(aws ecr get-login-password --region $region) | docker login --username AWS --password-stdin $ecr
-      - run:
-          name: Build Docker File
-          command : |
-            echo "Building docker file..."
-            docker build -t ${ecr}:${CIRCLE_SHA1} .
-      - run:
-          name: Push Docker Image
-          command: |
-            echo "Pushing image..."
-            docker push ${ecr}:${CIRCLE_SHA1}
-
+      - aws-ecr/build-and-push-image:
+            repo: portfolio-abh80 
+            assume-web-identity: false 
+            attach-workspace: false 
+            checkout: true 
+            create-repo: false 
+            docker-login: false 
+            public-registry: false 
+            push-image: true 
+            remote-docker-layer-caching: false 
+            repo-scan-on-push: true 
+            set-repo-policy: false 
+            setup-remote-docker: false 
+            skip-when-tags-exist: false 
+            region: $region 
+            tag: ${CIRCLE_SHA1} 
+      
       
       
       

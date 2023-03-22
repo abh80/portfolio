@@ -16,8 +16,7 @@ jobs:
       - run: npm run postbuild
 
   docker-build:
-    docker:
-      - image: cimg/node:16.10
+    executor: aws-cli/default
     steps:
       - checkout
       - aws-cli/setup:

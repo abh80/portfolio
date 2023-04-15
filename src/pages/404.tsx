@@ -17,14 +17,16 @@ export default function NotFound() {
           This page does not exist !
         </h1>
         <h2
-          className={"text-2xl font-semibold leading-loose " + kanit.className}
+          className={
+            "lg:text-2xl md:text-xl sm:text-md font-semibold leading-loose " +
+            kanit.className
+          }
         >
-          {/* eslint-disable-next-line react/no-unescaped-entities */}
           It's not easy to get lost, but its easy to get right back on track
         </h2>
         <Link
           className={
-            "text-blue-400 hover:underline text-[1.3rem] text-bold mt-5 " +
+            "text-blue-400 hover:underline lg:text-[1.3rem] md:text-[1rem] sm:text-[0.5rem] text-bold mt-5 " +
             roboto.className
           }
           href={"/"}

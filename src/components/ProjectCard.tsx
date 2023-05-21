@@ -70,7 +70,7 @@ export default function ProjectCard({ project }: { project: any }) {
       <div className="flex gap-1 flex-wrap">
         {project.topics.map((x: string, i: number) => (
           <div
-            className="dark:text-white md:text-md text-xs px-2 py-0.5 rounded-full dark:bg-sky-700 bg-sky-400"
+            className="max-h-6 dark:text-white md:text-md text-xs px-2 py-0.5 rounded-full dark:bg-sky-700 bg-sky-400"
             key={i}
           >
             {x}

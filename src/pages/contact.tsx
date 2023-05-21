@@ -75,16 +75,28 @@ export default function ContactPage() {
               Feel free to reach via any of the following emails -
               <div className="h-5"></div>
             </h2>
-            <table className="w-full table-fixed text-left rounded-lg border-separate dark:border-slate-200/10 border">
+            <table
+              className={
+                "w-42 sm:w-full lg:w-3/4 table-fixed text-left rounded-lg dark:border-slate-200/10 border border-collapse " +
+                roboto.className
+              }
+            >
               <thead>
-                <tr>
-                  <th className="px-4">Contact</th>
-                  <th className="px-4">Detail</th>
+                <tr className="border-b border-slate-200/10">
+                  <th className="px-4 py-1">Contact</th>
+                  <th className="px-4 py-1">Detail</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="text-slate-300">
                 <tr>
-                  <td></td>
+                  <td className="px-4 py-1">contact@abh80.site</td>
+                  <td className="px-4 py-1">
+                    Business purposes / formal way to reach
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-1">abhb787@outlook.com</td>
+                  <td className="px-4 py-1">Personal email</td>
                 </tr>
               </tbody>
             </table>

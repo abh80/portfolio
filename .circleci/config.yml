@@ -2,6 +2,8 @@ version: 2.1
 
 orbs:
   node: circleci/node@4.7
+  docker: circleci/docker@1.7.0
+  aws-ecr: circleci/aws-ecr@8.2.1
 
 jobs:
   build:
@@ -12,28 +14,39 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm run postbuild
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
-  deploy:
-    docker:
-      - image: cimg/node:16.10
+
+  docker-build:
+    executor: aws-ecr/default
     steps:
-      - attach_workspace:
-          at: ~/repo
-      - run: npm i --prefix=$HOME/.local -g vercel 
-      - run: vercel deploy --yes --prod --token $VERCEL_TOKEN
+      - checkout
+      - aws-ecr/build-and-push-image:
+            repo: portfolio-abh80 
+            assume-web-identity: false 
+            attach-workspace: false 
+            checkout: true 
+            create-repo: false 
+            docker-login: false 
+            public-registry: false 
+            push-image: true 
+            remote-docker-layer-caching: false 
+            repo-scan-on-push: true 
+            set-repo-policy: false 
+            setup-remote-docker: false 
+            skip-when-tags-exist: false 
+            region: $region 
+            tag: ${CIRCLE_SHA1} 
 
 workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - build
-      - deploy:
-          requires:
-            - build
+      - build:
           filters:
             branches:
               only:
-                - new
+                new
+      - docker-build:
+          requires:
+            - build
+        
+        

@@ -71,7 +71,10 @@ export default function BaseLayout({
         }
       >
         <div className={roboto.className + " mdx-view"}>
-          <MDXProvider components={components}>{children}</MDXProvider>
+          {
+            //@ts-ignore
+            <MDXProvider components={components}>{children}</MDXProvider>
+          }
         </div>
       </ViewItem>
     </>

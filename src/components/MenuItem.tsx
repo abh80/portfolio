@@ -16,23 +16,6 @@ export default function MenuItem({
   bgColor?: string;
   url: string;
 }) {
-  const containerVariants: Variants = {
-    hover: {},
-    click: {},
-  };
-  const childVariants: Variants = {
-    hover: {
-      scale: 1.2,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-      },
-    },
-    click: {
-      scale: 0.9,
-    },
-  };
   return (
     <Link
       href={url}
@@ -45,7 +28,7 @@ export default function MenuItem({
             bgColor,
           ].join(" ")}
         >
-          <i className="fa-solid fa-house fa-sm"></i>
+          <i className={icon}></i>
         </div>
       ) : null}
       <span

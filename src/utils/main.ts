@@ -60,7 +60,13 @@ export const menuPages1: Array<{
   {
     url: "/",
     title: "Home",
-    icon: "home",
+    icon: "fa-solid fa-house fa-sm",
     bgColor: "bg-blue-400",
+  },
+  {
+    url: "/contact",
+    title: "Contact",
+    icon: "fa-solid fa-address-book fa-sm",
+    bgColor: "bg-indigo-500",
   },
 ];

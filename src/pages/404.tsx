@@ -22,7 +22,8 @@ export default function NotFound() {
             kanit.className
           }
         >
-          It's not easy to get lost, but its easy to get right back on track
+          It&apos;s not easy to get lost, but its easy to get right back on
+          track
         </h2>
         <Link
           className={

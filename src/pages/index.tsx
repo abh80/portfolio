@@ -10,6 +10,7 @@ import * as process from "process";
 import MetaResolver from "@/components/MetaResolver";
 import { motion, Variants } from "framer-motion";
 import { kanit, roboto } from "@/providers/font";
+import Gap from "@/components/mdx/Gap";
 export default function Home({ projects }: { projects: any }) {
   const containerVariant: Variants = {
     hidden: {
@@ -89,7 +90,7 @@ export default function Home({ projects }: { projects: any }) {
             >
               <Link href={"#about-me"}>About Me</Link>
             </h1>
-            <div className="h-5"></div>
+            <Gap />
             <h2
               className={
                 kanit.className +
@@ -135,7 +136,7 @@ export default function Home({ projects }: { projects: any }) {
                 Skills
               </Link>
             </h1>
-            <div className="h-5"></div>
+            <Gap />
             <h2
               className={
                 kanit.className + " dark:text-white md:text-lg text-base"
@@ -144,7 +145,7 @@ export default function Home({ projects }: { projects: any }) {
               I have experience with the following stacks / programming
               languages / tools :
             </h2>
-            <div className="h-5"></div>
+            <Gap />
             <div className="flex flex-wrap gap-2">
               {SkillsSets.map((x, i) => (
                 <StackButton key={i} href={x.url} name={x.name} icon={x.icon} />
@@ -163,7 +164,7 @@ export default function Home({ projects }: { projects: any }) {
                 Projects
               </Link>
             </h1>
-            <div className="h-5"></div>
+            <Gap />
             <h2
               className={
                 kanit.className + " dark:text-white md:text-lg text-base"
@@ -175,7 +176,7 @@ export default function Home({ projects }: { projects: any }) {
                 the projects section
               </Link>
             </h2>
-            <div className="h-5"></div>
+            <Gap />
             <div className="flex flex-wrap gap-5 mb-20">
               {projects.map((x: any, i: number) => (
                 <ProjectCard key={i} project={x} />

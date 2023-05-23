@@ -3,13 +3,15 @@ import { motion, Variants } from "framer-motion";
 import MetaResolver from "@/components/MetaResolver";
 import { kanit, roboto } from "@/providers/font";
 import ViewItem from "@/components/ViewItem";
+import { MDXProvider } from "@mdx-js/react";
+import components from "@/components/mdx";
 
 export default function BaseLayout({
   children = null,
-  matter: { title, description },
+  matter: { title, description, caption },
 }: {
   children: any;
-  matter: { title: string; description: string };
+  matter: { title: string; description?: string; caption: string };
 }) {
   const containerVariant: Variants = {
     hidden: {
@@ -38,7 +40,7 @@ export default function BaseLayout({
                   kanit.className
                 }
               >
-                Home
+                {title}
               </motion.h2>
             </motion.div>
             <motion.h1
@@ -48,10 +50,10 @@ export default function BaseLayout({
               transition={{ delay: 0.2 }}
               className={
                 "text-3xl font-bold mt-2 dark:text-slate-200 md:text-7xl " +
-                roboto
+                roboto.className
               }
             >
-              {title}
+              {caption}
             </motion.h1>
             <motion.h3
               variants={containerVariant}
@@ -68,7 +70,9 @@ export default function BaseLayout({
           </div>
         }
       >
-        {children}
+        <div className={roboto.className + " mdx-view"}>
+          <MDXProvider components={components}>{children}</MDXProvider>
+        </div>
       </ViewItem>
     </>
   );

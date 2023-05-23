@@ -1,0 +1,34 @@
+.mdx-table {
+    @apply border;
+    @apply dark:border-slate-500/[0.5];
+    @apply rounded-md;
+    @apply dark:shadow-none;
+    @apply shadow-sm;
+    @apply w-full;
+    @apply border-slate-200;
+    @apply my-10;
+}
+.mdx-table table {
+    @apply border-collapse;
+    @apply w-full;
+    @apply text-left;
+}
+.mdx-table table thead {
+    @apply border-b;
+    @apply dark:border-slate-500/[0.5];
+    @apply border-slate-200
+}
+.mdx-table table th {
+    @apply px-2;
+    @apply py-1;
+}
+.mdx-table table tbody tr td {
+    @apply px-2;
+    @apply py-1;
+}
+.mdx-view > * + * :not(hr | table) {
+    @apply mt-5;
+}
+.mdx-heading--h2 {
+    @apply mb-5;
+}

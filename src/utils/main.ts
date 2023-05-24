@@ -70,3 +70,13 @@ export const menuPages1: Array<{
     bgColor: "bg-indigo-500",
   },
 ];
+export const SocialLinks: Array<{
+  url: string;
+  title: string;
+  icon?: string;
+}> = [
+  {
+    url: "https://abh80.site/links/github",
+    title: "GitHub",
+  },
+];

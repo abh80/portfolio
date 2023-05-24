@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { roboto } from "@/providers/font";
+import { kanit, roboto } from "@/providers/font";
 import Link from "next/link";
 import styles from "../styles/Component.module.css";
 import MenuItem from "@/components/MenuItem";
@@ -56,12 +56,12 @@ export default function ViewItem({
       if (document.body.scrollTop > h.offsetHeight) {
         h.classList.remove("dark:bg-[#0d1b1c]");
         h.classList.add("dark:bg-slate-900/[0.25]");
-        // h.classList.remove("bg-white/95");
-        // h.classList.add("bg-white");
+        h.classList.remove("bg-white/95");
+        h.classList.add("bg-white");
       } else {
         h.classList.add("dark:bg-[#0d1b1c]");
-        // h.classList.add("bg-white/95");
-        // h.classList.remove("bg-white");
+        h.classList.add("bg-white/95");
+        h.classList.remove("bg-white");
         h.classList.remove("dark:bg-slate-900/[0.25]");
       }
     });
@@ -97,8 +97,7 @@ export default function ViewItem({
       y: [0, -50, 0],
     },
   };
-  // @ts-ignore
-  // @ts-ignore
+
   return (
     <>
       <header
@@ -107,8 +106,8 @@ export default function ViewItem({
           styles.mainHeader
         }
       >
-        <div className="p-2 w-full max-w-7xl mx-auto justify-between flex items-center h-full">
-          <div className="max-w-fit mr-0">
+        <div className="p-2 w-full max-w-7xl mx-auto justify-between flex items-center h-full flex-row">
+          <div className="max-w-fit mr-0 flex gap-5">
             <Link href={"/"} className={"flex gap-2 w-fit"}>
               <Image
                 src={
@@ -129,12 +128,28 @@ export default function ViewItem({
                 Abh80
               </h1>
             </Link>
+            <div className="hidden md:flex h-full rounded-full py-1 px-4 dark:bg-sky-600/30 backdrop-blur-xl gap-5 border border-sky-500 dark:border-none">
+              {menuPages1.map((x, i) => (
+                <Link
+                  key={i}
+                  href={x.url}
+                  className={
+                    kanit.className +
+                    " dark:text-sky-200 hover:underline transition-all text-sky-600"
+                  }
+                >
+                  {x.title}
+                </Link>
+              ))}
+            </div>
           </div>
+
           <div className="block md:hidden relative">
             <button onClick={() => setShowMenu(true)}>
               <i className="fa-solid fa-bars"></i>
             </button>
           </div>
+
           <div
             className="hidden md:block relative"
             tabIndex={0}

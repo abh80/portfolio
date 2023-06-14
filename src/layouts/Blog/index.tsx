@@ -4,7 +4,8 @@ import ViewItem from "@/components/ViewItem";
 import { kanit, roboto } from "@/providers/font";
 import { MDXProvider } from "@mdx-js/react";
 import components from "@/components/mdx";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import NextLink from "next/link";
 
 export default function BlogLayout({
   children = null,
@@ -31,6 +32,8 @@ export default function BlogLayout({
       y: 0,
     },
   };
+  const [path, setPath] = useState("");
+  useEffect(() => setPath(window.location.pathname), []);
   return (
     <>
       <MetaResolver
@@ -113,6 +116,20 @@ export default function BlogLayout({
               </span>
             ))}
           </div>
+          <NextLink
+            href={
+              "https://github.com/abh80/portfolio/tree/new/src/pages/blogs/" +
+              path +
+              ".mdx"
+            }
+            className={
+              "flex gap-2 p-2 mt-4 items-center border border-sky-500 w-fit rounded-md dark:text-slate-300 text-slate-600 " +
+              roboto.className
+            }
+          >
+            <i className="fa-solid fa-pen"></i>
+            <span>Edit this page on GitHub</span>
+          </NextLink>
         </div>
       </ViewItem>
     </>

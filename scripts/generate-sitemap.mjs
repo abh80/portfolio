@@ -19,6 +19,7 @@ async function generateSitemap() {
         `<url><loc>https://abh80.site${x
           .replace("pages/", "/")
           .replace(".tsx", "")
+          .replace(".mdx", "")
           .replace("index", "")}</loc></url>`
     )
     .join("");

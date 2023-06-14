@@ -1,5 +1,5 @@
 import { getSlug } from "@/utils/mdx";
-import { kanit } from "@/providers/font";
+import { kanit, roboto } from "@/providers/font";
 import Link from "next/link";
 
 export function H2({ children }: any) {
@@ -20,12 +20,23 @@ export function H2({ children }: any) {
 
 export function H3({ children }: any) {
   return (
-    <span
+    <h3
       className={
-        kanit.className + " dark:text-white md:text-lg text-base leading-loose "
+        kanit.className +
+        " dark:text-white md:text-lg text-base leading-loose font-bold "
       }
     >
       {children}
-    </span>
+    </h3>
+  );
+}
+
+export function P({ children }: any) {
+  return (
+    <p
+      className={`${roboto.className} dark:text-white md:text-md text-base leading-loose mdx-heading--p`}
+    >
+      {children}
+    </p>
   );
 }

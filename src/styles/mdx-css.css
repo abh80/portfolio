@@ -8,27 +8,112 @@
     @apply border-slate-200;
     @apply my-10;
 }
+
 .mdx-table table {
     @apply border-collapse;
     @apply w-full;
     @apply text-left;
 }
+
 .mdx-table table thead {
     @apply border-b;
     @apply dark:border-slate-500/[0.5];
     @apply border-slate-200
 }
+
 .mdx-table table th {
     @apply px-2;
     @apply py-1;
 }
+
 .mdx-table table tbody tr td {
     @apply px-2;
     @apply py-1;
 }
-.mdx-view > * + * :not(hr | table) {
+
+.mdx-view * + * :not(hr | table) {
     @apply mt-5;
 }
+
+.mdx-view p + p {
+    @apply mt-5;
+}
+
+.mdx-image {
+    @apply my-10;
+}
+
 .mdx-heading--h2 {
     @apply mb-5;
 }
+
+.mdx-heading--h2 + p {
+    @apply mt-3;
+}
+
+.mdx-heading--p + .mdx-heading--h2 {
+    @apply mt-4;
+}
+
+.mdx-view > p + ul {
+    @apply mt-2;
+}
+
+.mdx-view > ul > li + li {
+    @apply mt-5;
+}
+
+.mdx-pre {
+    @apply border;
+    @apply dark:border-slate-50/[0.05];
+    @apply dark:border-slate-500/[0.05];
+    @apply rounded-lg;
+    @apply shadow-md;
+    @apply dark:bg-[#12303a]/50;
+    @apply bg-[#f8fafc];
+    @apply overflow-x-auto;
+}
+
+.token.keyword {
+    @apply text-pink-500/80;
+}
+
+.token.function {
+    @apply text-purple-400/80;
+}
+
+.token.punctuation {
+    @apply text-slate-400/70;
+}
+
+.token.tag {
+    @apply text-green-500/80;
+}
+
+.token.attr-name {
+    @apply text-yellow-300/80;
+}
+
+.token.string {
+    @apply text-sky-400/80;
+}
+.token.class-name{
+    @apply text-green-400/80;
+}
+.token.comment {
+    @apply text-slate-400/70;
+}
+.mdx-view p > code {
+    @apply px-1;
+    @apply dark:bg-sky-700/50;
+    @apply bg-slate-300;
+    @apply dark:text-slate-300;
+    @apply text-slate-600;
+    @apply font-semibold;
+}
+.mdx-view > p + h3 {
+    @apply mt-4;
+}
+.mdx-view > h3 + p {
+     @apply mt-3;
+ }

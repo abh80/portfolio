@@ -16,7 +16,7 @@ const withLayout = () => (tree, file) => {
   tree.children.unshift({
     type: "mdxjsEsm",
     data: {
-      estree: parse(`import ${layout} from '../layouts/${layout}'`),
+      estree: parse(`import ${layout} from '@/layouts/${layout}'`),
     },
   });
   const content = `export default ({ children }) => (

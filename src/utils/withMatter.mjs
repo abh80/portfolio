@@ -2,10 +2,15 @@ import fm from "front-matter";
 import { z } from "zod";
 
 const BaseMatter = z.object({
-  title: z.string().max(15),
-  description: z.string().max(60).optional(),
+  title: z.string(),
+  description: z.string().optional(),
   layout: z.string().default("Base"),
-  caption: z.string().max(25),
+  caption: z.string().optional(),
+  tag: z.string().optional(),
+  cover: z.string().optional(),
+  topics: z.array(z.string()).optional(),
+  date: z.string().optional(),
+  author: z.string().optional(),
 });
 const withMatter = () => (tree, file) => {
   const data = fm(file.value).attributes;

@@ -259,7 +259,7 @@ export default function ViewItem({
                 <section className="mt-2 border-l dark:border-slate-600 border-slate-400 space-y-1.5">
                   {articles.map((x, i) => (
                     <ChildMenuItem
-                      title={x.replace("-", " ")}
+                      title={x.replaceAll("-", " ")}
                       hash={x}
                       key={i}
                       active={curr_hash == x}
@@ -270,10 +270,10 @@ export default function ViewItem({
             ) : null}
           </div>
         </div>
-        <div className="p-2 px-3 lg:px-5 w-full">{children}</div>
+        <div className="p-2 px-3 lg:px-5 min-w-0">{children}</div>
       </div>
       <footer className="w-full mx-auto bg-transparent dark:bg-gradient-to-b dark:from-transparent dark:to-[#0d1b1c] px-2 md:px-3">
-        <div className="block pb-10 pt-24 flex items-center px-1 justify-between w-full max-w-7xl mx-auto">
+        <div className="pb-10 pt-24 flex items-center px-1 justify-between w-full max-w-7xl mx-auto">
           <div className="md:max-w-[320px] w-full space-y-3">
             <h3
               className={

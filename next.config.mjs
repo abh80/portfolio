@@ -4,11 +4,17 @@ import remark from "remark-gfm";
 import remarkFrontMatter from "remark-frontmatter";
 import withMatter from "./src/utils/withMatter.mjs";
 import withLayout from "./src/utils/withLayout.mjs";
+import rehype from "@mapbox/rehype-prism";
+
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   images: {
-    domains: ["img.shields.io", "avatars.githubusercontent.com"],
+    domains: [
+      "img.shields.io",
+      "avatars.githubusercontent.com",
+      "media1.giphy.com",
+    ],
   },
 };
 const withMDX = mdx({
@@ -18,7 +24,7 @@ const withMDX = mdx({
     // as the package is ESM only
     // https://github.com/remarkjs/remark-gfm#install
     remarkPlugins: [remarkFrontMatter, remark, withMatter, withLayout],
-    rehypePlugins: [],
+    rehypePlugins: [rehype],
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",
     providerImportSource: "@mdx-js/react",

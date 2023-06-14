@@ -1,0 +1,151 @@
+---
+title: Learn Java from Scratch
+description: In this guide I will show you the basic steps you can follow to become a pro in Java.
+layout: Blog
+tag: Programming Basics
+cover: /blogs/assets/learn-java-from-scratch/emile-perron-xrVDYZRGdw4-unsplash.jpg
+topics: ["java", "basics"]
+author: abh80
+date: June 14, 2023
+---
+import Image from "@/components/mdx/Image"
+import Quote from "../../components/mdx/Quote";
+import ShowResources from "../../components/mdx/ShowResources";
+
+
+
+## Introduction
+Java is a versatile and popular programming language. It can be used to create Mobile apps, Web apps, Desktop apps, and much more!
+Java is Object-Oriented, that means it is a Class based general puprose programming language. Java was developed in year 1995 by Oracle (formerly Sun Microsystems).
+I think that amount of overview of Java is enough to get started!
+
+<Image src="/blogs/assets/learn-java-from-scratch/emile-perron-xrVDYZRGdw4-unsplash.jpg"/>
+
+## Getting Started
+Now that we know what Java is, it's time to set up the environment so that we can compile and run Java in our system. To install Java we must follow the underneath steps -
+
+- Download a suitable JDK from [Java Downloads](https://www.oracle.com/java/technologies/downloads/) (I recommend using the Java 17 version but for industrial flexibility you may also want to choose Java 8)
+- Once done we can check if it's available for us in the system path
+
+    ```bash
+    javac -v
+    java -v
+    ```
+    <Quote type="note">If the above commands produce error make sure that you have installed Java properly, try closing and
+    opening your terminal again.</Quote>
+- Lets run a simple hello world program to test if everything is working
+
+  ```java
+  // Main.java
+  public class Main {
+      public static void main (String[] args) {
+          System.out.println("Hello World!");
+      }
+  }
+    ```
+
+- Time to run our code, we will use the `java` command to run our code
+
+    ```bash
+    java Main.java
+    ```
+
+    <Quote type="note">You can also run the code by pre compiling it to a class file, by using `javac`</Quote>
+
+All is set, now let's dive to learn more about Java!
+
+----
+## Basics
+The first step to learning any programming language is that we understand the fundamentals and basic syntax. Java is all about Objects and Classes. To define a
+Java class we create a file with the class name and declare it using <br/> `public class class_name {}` . A Java class should **not** necessarily contain a `main` function.
+
+To learn the basics of Java there are several resources like [Sololearn](https://www.sololearn.com/learn/languages/java), [FreeCodeCamp](https://www.freecodecamp.org/news/learn-java-free-java-courses-for-beginners/) and are completely free.
+
+You should take a complete look at the above-mentioned articles to know about Java basics.
+
+<br/>
+
+<Quote type="warning">Do not just keep reading / watching, make sure to make small projects and practice Java. As
+    practice will make you perfect! Do check out the [karan/projects](https://github.com/karan/Projects) on Github which
+    lists variety of problems that you can solve and practice.</Quote>
+
+----
+
+## Mastering Concepts
+If you managed to stick around with Java after learning the basics, it's time to master it!
+
+- Learn about the Java APIs and libraries such as IO, Tasks, Threads.
+
+    Resources:
+    [Official Java 11 docs](https://docs.oracle.com/en/java/javase/11/docs/api/index.html)
+    [Java Threads](https://www.w3schools.com/java/java_threads.asp)
+
+- Learn about build tools such as Gradle/Maven.
+    Gradle and Maven are good tools to automate building processes with dependencies.
+
+
+    Resources:
+    [Introduction to Gradle](https://www.baeldung.com/gradle)
+    [Learn which is right for you, maven or gradle](https://www.baeldung.com/ant-maven-gradle)
+    [Maven in 5 mins](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
+
+- Learn about libraries like Apache Commons which provides additional functionality.
+
+    Resources:
+    [Apache Commons](https://www.baeldung.com/java-commons-lang-3)
+
+----
+
+## Making Real World Projects
+Confident about making a real-world Java project? Don't worry here are what you can do next
+
+### Android Apps
+Try learning about Android Apps, you can create your custom UI or make use of existing UIs such as [Jetpack Compose](https://developer.android.com/jetpack/compose).
+
+Check out the [Android Development Roadmap](https://roadmap.sh/android)
+
+### Web Apps
+You can also create web apps with Java using [Spring Boot](https://spring.io/guides/gs/spring-boot/) and [Thymeleaf](https://www.thymeleaf.org/).
+
+Check out the [Spring Boot Roadmap](https://roadmap.sh/spring-boot)
+
+## Wrap
+That's a wrap! I hope you enjoyed this article,as this is my first article there may be some errors or missed a few steps. Do let me know in the Github Issue section! Any help is appreciated 👏
+
+<Image
+    src="https://media1.giphy.com/media/3ohc0UBfKFgX8dXkB2/giphy.gif?cid=ecf05e470wt8pri58lanc75s5v5nuimax5u8nwbcyh945ndt&ep=v1_gifs_search&rid=giphy.gif&ct=g"/>
+
+## Resources
+Welcome to the treasure box of this article! Find all the important Java resources here
+<br/>
+<ShowResources>
+    [Oracle Java Documentation](https://docs.oracle.com/en/java/javase/index.html)
+
+    [Java Tutorials (Oracle)](https://docs.oracle.com/javase/tutorial/index.html)
+
+    [Java API Documentation (Oracle)](https://docs.oracle.com/en/java/javase/16/docs/api/index.html)
+
+    [Java Platform, Standard Edition (Java
+    SE)](https://www.oracle.com/java/technologies/javase-jdk16-doc-downloads.html)
+
+    [Java Language Specification (JLS)](https://docs.oracle.com/javase/specs/index.html)
+
+    [Java Development Kit (JDK) Downloads
+    (Oracle)](https://www.oracle.com/java/technologies/javase-jdk16-downloads.html)
+
+    [Java Magazine](https://blogs.oracle.com/javamagazine/)
+
+    [JavaWorld](https://www.javaworld.com/)
+
+    [Baeldung](https://www.baeldung.com/)
+
+    [Java Code Geeks](https://www.javacodegeeks.com/)
+
+    [Java Reddit](https://www.reddit.com/r/java/)
+
+    [Stack Overflow (Java Tag)](https://stackoverflow.com/questions/tagged/java)
+
+    [GitHub (Java)](https://github.com/topics/java)
+
+    [Java Code Examples](https://www.programcreek.com/java-api-examples/)
+</ShowResources>

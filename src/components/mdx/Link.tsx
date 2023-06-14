@@ -7,7 +7,11 @@ export default function Link({
   href: string;
 }) {
   return (
-    <NextLink href={href} className="text-blue-400 hover:underline">
+    <NextLink
+      href={href}
+      className="text-blue-400 hover:underline"
+      target="_blank"
+    >
       {children}
     </NextLink>
   );

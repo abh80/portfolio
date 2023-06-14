@@ -118,7 +118,7 @@ export default function BlogLayout({
           </div>
           <NextLink
             href={
-              "https://github.com/abh80/portfolio/tree/new/src/pages/blogs/" +
+              "https://github.com/abh80/portfolio/tree/new/src/pages/" +
               path +
               ".mdx"
             }
